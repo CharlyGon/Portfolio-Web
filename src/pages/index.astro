@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import SocialPill from "../components/SocialPill.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import Experience from "../components/Experience.astro";
+import SectionConteiner from "../components/SectionConteiner.astro";
+import BriefcaseIcon from "../components/icons/Briefcase.astro";
+import CodeIcon from "../components/icons/Code.astro";
+import Projects from "../components/Projects.astro";
+---
+
+<Layout 
+	title="Gonzalo Fernández."
+ 	description="Desarrollador web y backend."
+	>
+	<main class="px-4">
+		<SectionConteiner class="py-44 pb-32">
+			<img
+				class="rounded-full w-30 h-30 mb-4"
+				src="https://media.licdn.com/dms/image/D4D03AQE-tFaAQZ1Nyg/profile-displayphoto-shrink_200_200/0/1704371263147?e=2147483647&v=beta&t=zOvlfQs_5ZqBFa1ph-RUcMGUelpUyX1dVbKdqqQd6E8"
+				alt="gonzalo photo"
+			/>
+			<h1
+				class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+			>
+				Hey, Soy Gonzalo.
+				<a
+					href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
+					target="_blank"
+					rel="noopener"
+					class="flex justify-center items-center"
+				>
+					<Badge>Disponible para trabajar</Badge>
+				</a>
+			</h1>
+			<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
+				<span>+3 años de experiencia.</span>
+				<span class="text-yellow-200/90"
+					>Desarrollador web y backend.</span
+				>
+				<span class="text-red-200/90">De san cayetano, Argentina.</span>
+				<span class="opacity-80"
+					>Preparado para crear soluciones informaticas.</span
+				>
+			</h2>
+
+			<nav class="flex gap-4 mt-8 flex-wrap">
+				<SocialPill
+					href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
+				>
+					<LinkedInIcon class="size-4 md:size-6" />
+					LinkedIn
+				</SocialPill>
+				<SocialPill href="https://github.com/CharlyGon">
+					<GitHubIcon class="size-4 md:size-6" />
+					GitHub
+				</SocialPill>
+				<SocialPill href="mailto:fernandez-gonza@hotmail.com">
+					<MailIcon class="size-4 md:size-6" />
+					fernandez-gonza@hotmail.com
+				</SocialPill>
+			</nav>
+		</SectionConteiner>
+
+		<SectionConteiner id="experience">
+			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+				<BriefcaseIcon class="size-7" />
+				Experiencia Laboral
+			</h2>
+			<Experience />
+		</SectionConteiner>
+		
+		<SectionConteiner id="projects">
+			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+				<CodeIcon class="size-7" />
+				Proyectos
+			</h2>
+			<Projects />
+		</SectionConteiner>
+	</main>
+</Layout>

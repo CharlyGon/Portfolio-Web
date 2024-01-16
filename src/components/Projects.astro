@@ -1,0 +1,60 @@
+---
+import AstroIcon from "./icons/AstroIcon.astro";
+import TailwindIcon from "./icons/Tailwind.astro";
+
+const TAGS = {
+    ASTRO: {
+        name: "Astro",
+        class: "bg-black text-white",
+        icon: AstroIcon,
+    },
+    TAILWIND: {
+        name: "Tailwind",
+        class: "bg-white text-[#73bcf6]",
+        icon: TailwindIcon,
+    },
+};
+
+const PROJECTS = [
+    {
+        title: "Web Profolio",
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
+        image: "/projects/web.webp",
+        tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    },
+    {
+        title: "Web Profolio",
+        description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
+        image: "/projects/web.webp",
+        tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    }
+];
+---
+
+{
+    PROJECTS.map(({ image, title, description, tags }) => (
+        <article>
+            <h3 class=" text-2xl font-semibold text-yellow-200 mb-2">
+                {title}
+            </h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <ul class=" flex gap-x-2 flex-row">
+                {tags.map((tag) => (
+                    <li>
+                        <span class={`flex gap-x-2 rounded-full text-xs${tag.class} py-1 px-2`}>
+                        <tag.icon class="size-4" />
+                        {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            <img
+                class="rounded shadow-2xl shadow-white/10s"
+                src={image}
+                alt={title}
+            />
+        </article>
+    ))
+}
