@@ -10,17 +10,17 @@ import SectionConteiner from "../components/SectionConteiner.astro";
 import BriefcaseIcon from "../components/icons/Briefcase.astro";
 import CodeIcon from "../components/icons/Code.astro";
 import Projects from "../components/Projects.astro";
+import UserIcon from "../components/icons/User.astro";
+import AboutMe from "../components/AboutMy.astro";
 ---
 
-<Layout 
-	title="Gonzalo Fernández."
- 	description="Desarrollador web y backend."
-	>
+<Layout title="Gonzalo Fernández." description="Desarrollador web y backend.">
 	<main class="px-4">
-		<SectionConteiner class="py-44 pb-32">
+		<SectionConteiner class="py-40 pb-32">
+			<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
 			<img
-				class="rounded-full w-30 h-30 mb-4"
-				src="https://media.licdn.com/dms/image/D4D03AQE-tFaAQZ1Nyg/profile-displayphoto-shrink_200_200/0/1704371263147?e=2147483647&v=beta&t=zOvlfQs_5ZqBFa1ph-RUcMGUelpUyX1dVbKdqqQd6E8"
+				class="rounded mb-7 max-h-56"
+				src="/public/projects/gonzalo.png"
 				alt="gonzalo photo"
 			/>
 			<h1
@@ -72,13 +72,21 @@ import Projects from "../components/Projects.astro";
 			</h2>
 			<Experience />
 		</SectionConteiner>
-		
+
 		<SectionConteiner id="projects">
 			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 				<CodeIcon class="size-7" />
 				Proyectos
 			</h2>
 			<Projects />
+		</SectionConteiner>
+
+		<SectionConteiner id="aboutmy">
+			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+				<UserIcon class="size-7" />
+				About My
+			</h2>
+			<AboutMe />
 		</SectionConteiner>
 	</main>
 </Layout>
