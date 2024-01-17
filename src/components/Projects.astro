@@ -1,6 +1,9 @@
 ---
 import AstroIcon from "./icons/AstroIcon.astro";
 import TailwindIcon from "./icons/Tailwind.astro";
+import GitHubIcon from "./icons/GitHub.astro";
+import LinkButton from "./LinkButton.astro";
+import WebIcon from "./icons/WebIcon.astro";
 
 const TAGS = {
     ASTRO: {
@@ -22,6 +25,8 @@ const PROJECTS = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
         image: "/projects/web.webp",
         tags: [TAGS.ASTRO, TAGS.TAILWIND],
+        link: "https://google.com",
+        github: "https://github.com",
     },
     {
         title: "Web Profolio",
@@ -29,12 +34,14 @@ const PROJECTS = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
         image: "/projects/web.webp",
         tags: [TAGS.ASTRO, TAGS.TAILWIND],
-    }
+        link: "https://google.com",
+    },
 ];
 ---
 
+<section class="flex flex-col gap-y-16">
 {
-    PROJECTS.map(({ image, title, description, tags }) => (
+    PROJECTS.map(({ image, title, description, tags, link, github}) => (
         <article>
             <h3 class=" text-2xl font-semibold text-yellow-200 mb-2">
                 {title}
@@ -43,9 +50,11 @@ const PROJECTS = [
             <ul class=" flex gap-x-2 flex-row">
                 {tags.map((tag) => (
                     <li>
-                        <span class={`flex gap-x-2 rounded-full text-xs${tag.class} py-1 px-2`}>
-                        <tag.icon class="size-4" />
-                        {tag.name}
+                        <span
+                            class={`flex gap-x-2 rounded-full text-xs${tag.class} py-1 px-2`}
+                        >
+                            <tag.icon class="size-4" />
+                            {tag.name}
                         </span>
                     </li>
                 ))}
@@ -55,6 +64,19 @@ const PROJECTS = [
                 src={image}
                 alt={title}
             />
+            <footer class="flex gap-x-4 items-end justify-start mt-4 mb-8">
+                {github && (
+                    <LinkButton href={github}>
+                        <GitHubIcon class="size-6" />
+                        Ver código fuente
+                    </LinkButton>
+                )}
+                <LinkButton href={link}>
+                    <WebIcon class="size-6" />
+                    Ir al sitio web
+                </LinkButton>
+            </footer>
         </article>
     ))
 }
+</section>

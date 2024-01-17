@@ -28,22 +28,25 @@ import AboutMe from "../components/AboutMy.astro";
 			>
 				Hey, Soy Gonzalo.
 				<a
-					href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
+					href="/projects/CV-Gonzalo-Fernandez.pdf"
 					target="_blank"
 					rel="noopener"
-					class="flex justify-center items-center"
+					class="flex justify-center items-center hover:scale-105 transition-all duration-300 ease-in-out"
 				>
-					<Badge>Disponible para trabajar</Badge>
+					<Badge>Download CV</Badge>
 				</a>
 			</h1>
 			<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
 				<span>+3 años de experiencia.</span>
+				Me especializo en el
 				<span class="text-yellow-200/90"
 					>Desarrollador web y backend.</span
 				>
-				<span class="text-red-200/90">De san cayetano, Argentina.</span>
+				Recido en
+				<span class="text-red-200/90">San Cayetano, Argentina.</span>
 				<span class="opacity-80"
-					>Preparado para crear soluciones informaticas.</span
+					>Preparado para crear soluciones informaticas innovadoras y
+					eficientes.</span
 				>
 			</h2>
 
@@ -84,7 +87,7 @@ import AboutMe from "../components/AboutMy.astro";
 		<SectionConteiner id="aboutmy">
 			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 				<UserIcon class="size-7" />
-				About My
+				About
 			</h2>
 			<AboutMe />
 		</SectionConteiner>
