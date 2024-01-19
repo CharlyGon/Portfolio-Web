@@ -1,27 +1,98 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import NodeIcon from "./icons/Node.astro";
+import ReactIcon from "./icons/React.astro";
+import MongoIcon from "./icons/MongoDB.astro";
+import MysqlIcon from "./icons/Mysql.astro";
+import AWSIcon from "./icons/Aws.astro";
+import CSSIcon from "./icons/Css.astro";
+import PythonIcon from "./icons/Python.astro";
+import TypescriptIcon from "./icons/Typescript.astro";
+import DockerIcon from "./icons/Docker.astro";
+import GitIcon from "./icons/Git.astro";
+
+
+const TAGS = {
+    Node: {
+        name: "Node.js",
+        class: "bg-green-100 text-green-800",
+        icon: NodeIcon,
+    },
+    React: {
+        name: "React.js",
+        class: "bg-blue-100 text-blue-800",
+        icon: ReactIcon,
+    },
+    Mongodb: {
+        name: "MongoDB",
+        class: "bg-green-100 text-green-800",
+        icon: MongoIcon,
+    },
+    Mysql: {
+        name: "MySQL",
+        class: "bg-blue-100 text-blue-800",
+        icon: MysqlIcon,
+    },
+    AWS: {
+        name: "AWS",
+        class: "bg-yellow-100 text-yellow-800",
+        icon: AWSIcon,
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-blue-100 text-blue-800",
+        icon: CSSIcon,
+    },
+    Python: {
+        name: "Python",
+        class: "bg-blue-100 text-blue-800",
+        icon: PythonIcon,
+    },
+    Typescript: {
+        name: "Typescript",
+        class: "bg-blue-100 text-blue-800",
+        icon: TypescriptIcon,
+    },
+    Docker: {
+        name: "Docker",
+        class: "bg-blue-100 text-blue-800",
+        icon: DockerIcon,
+    },
+    Git: {
+        name: "Git",
+        class: "bg-blue-100 text-blue-800",
+        icon: GitIcon,
+    },
+};
 
 const EXPERIENCE = [
     {
-        title: "Application UI code in Tailwind CSS",
-        date: "February 2022",
+        title: "Software Developer",
+        date: "September 2021 - Actualidad",
         description:
-            "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
-        link: "#",
+            "Backend development of a document versioning system. Responsible for deployments and infrastructure. Drafting documentation for technical specifications.Backend development of a document versioning system. Responsible for deployments and infrastructure. Drafting documentation for technical specifications.",
+        tags: [TAGS.Node, TAGS.Mongodb, TAGS.AWS, TAGS.Typescript, TAGS.Docker, TAGS.Git],
     },
     {
-        title: "Marketing UI design in Figma",
-        date: "March 2022",
+        title: "Software Developer",
+        date: "March 2023 - August 2023",
         description:
-            "All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.",
-        link: "#",
+            "Backend development of a network for the exchange of virtual assets oriented towards influencers. Automation of smart contracts. Deployment and infrastructure deployment. Interaction with the blockchain.",
+        tags: [TAGS.Node, TAGS.Mysql, TAGS.AWS, TAGS.Typescript, TAGS.Docker, TAGS.Git],
     },
     {
-        title: "E-Commerce UI code in Tailwind CSS",
-        date: "April 2022",
+        title: "Software Developer",
+        date: "February 2022 - June 2022",
         description:
-            "Get started with dozens of web components and interactive elements built on top of Tailwind CSS.",
-        link: "#",
+            "Software developer for a graphic-less proxy. Their focus was on scripts and infrastructure setup, allowing to overcome geographical restrictions, maintain anonymity, and reuse IP-restricted services by dynamically providing a new address, adapting through scripts and automations.",
+        tags: [TAGS.AWS, TAGS.Python, TAGS.Docker, TAGS.Git],
+    },
+    {
+        title: "Trainee",
+        date: "September 2020 - August 2021",
+        description:
+            "Responsible for the company's landing page development. Designing applications through layout with React, CSS, and Material-UI. Implementation of application virtualization using Docker. Proficient in managing repositories on GitHub and deploying on AWS.",
+        tags: [TAGS.React, TAGS.CSS, TAGS.AWS, TAGS.Docker, TAGS.Git],
     },
 ];
 ---

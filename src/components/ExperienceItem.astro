@@ -1,12 +1,14 @@
 ---
+import type { JSX } from 'astro/jsx-runtime';
+
 export interface Props {
     title: string;
     description: string;
-    link?: string;
+    tags?: { name: string; icon: JSX.Element }[];
     date: string;
 }
 
-const { title, description, link, date } = Astro.props;
+const { title, description, tags, date } = Astro.props;
 ---
 
 <div
@@ -20,6 +22,19 @@ const { title, description, link, date } = Astro.props;
 <h3 class="text-lg font-semibold text-gray-900 dark:text-yellow-200">
     {title}
 </h3>
-<p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-pretty">
+<p
+    class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-pretty"
+>
     {description}
 </p>
+{
+    tags && (
+        <div class="flex flex-wrap">
+            {tags.map((tag) => (
+                <span class="px-2 py-1 mr-2 mb-2 text-sm font-medium text-gray-900 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-200">
+                    <tag.icon />
+                </span>
+            ))}
+        </div>
+    )
+}
