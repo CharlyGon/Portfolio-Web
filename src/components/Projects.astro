@@ -5,7 +5,6 @@ import GitHubIcon from "./icons/GitHub.astro";
 import LinkButton from "./LinkButton.astro";
 import WebIcon from "./icons/WebIcon.astro";
 
-
 const TAGS = {
     ASTRO: {
         name: "Astro",
@@ -23,62 +22,61 @@ const PROJECTS = [
     {
         title: "Web Profolio",
         description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
+            "Este proyecto fue construido con Astro y Tailwind CSS. Astro proporcionó una arquitectura eficiente para generar sitios estáticos y dinámicos, mientras que Tailwind CSS facilitó la creación de estilos atractivos mediante su enfoque basado en clases. La combinación de ambas herramientas me permitió un desarrollo eficiente, un diseño atractivo y un rendimiento optimizado, proporcionando una base sólida para la implementación de este proyecto.",
         image: "/projects/web.webp",
         tags: [TAGS.ASTRO, TAGS.TAILWIND],
         link: "https://gonzalofernandez.netlify.app/",
         github: "https://github.com/CharlyGon/porfolio-web",
-        
     },
-    {
-        title: "Web Profolio",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
-        image: "/projects/web.webp",
-        tags: [TAGS.ASTRO, TAGS.TAILWIND],
-        link: "https://google.com",
-    },
+    // {
+    //     title: "Web Profolio",
+    //     description:
+    //         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget ultricies aliquam, nunc nisl aliquet nunc, vitae aliquam nisl nunc eu nisl. ",
+    //     image: "/projects/web.webp",
+    //     tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    //     link: "https://google.com",
+    // },
 ];
 ---
 
 <section class="flex flex-col gap-y-16">
-{
-    PROJECTS.map(({ image, title, description, tags, link, github}) => (
-        <article>
-            <h3 class=" text-2xl font-semibold text-yellow-200 mb-2">
-                {title}
-            </h3>
-            <p class="text-lg mb-4 text-pretty">{description}</p>
-            <ul class=" flex gap-x-2 flex-row">
-                {tags.map((tag) => (
-                    <li>
-                        <span
-                            class={`flex gap-x-2 rounded-full text-xs${tag.class} py-1 px-2`}
-                        >
-                            <tag.icon class="size-4" />
-                            {tag.name}
-                        </span>
-                    </li>
-                ))}
-            </ul>
-            <img
-                class="rounded shadow-2xl shadow-white/10s"
-                src={image}
-                alt={title}
-            />
-            <footer class="flex gap-x-4 items-end justify-start mt-4 mb-8">
-                {github && (
-                    <LinkButton href={github}>
-                        <GitHubIcon class="size-6" />
-                        Ver código fuente
+    {
+        PROJECTS.map(({ image, title, description, tags, link, github }) => (
+            <article>
+                <h3 class=" text-2xl font-semibold text-yellow-200 mb-2">
+                    {title}
+                </h3>
+                <p class="text-lg mb-4 text-pretty">{description}</p>
+                <ul class=" flex gap-x-2 flex-row">
+                    {tags.map((tag) => (
+                        <li>
+                            <span
+                                class={`flex gap-x-2 rounded-full text-xs${tag.class} py-1 px-2`}
+                            >
+                                <tag.icon class="size-4" />
+                                {tag.name}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+                <img
+                    class="rounded shadow-2xl shadow-white/10s"
+                    src={image}
+                    alt={title}
+                />
+                <footer class="flex gap-x-4 items-end justify-start mt-4 mb-8">
+                    {github && (
+                        <LinkButton href={github}>
+                            <GitHubIcon class="size-6" />
+                            Ver código fuente
+                        </LinkButton>
+                    )}
+                    <LinkButton href={link}>
+                        <WebIcon class="size-6" />
+                        Ir al sitio web
                     </LinkButton>
-                )}
-                <LinkButton href={link}>
-                    <WebIcon class="size-6" />
-                    Ir al sitio web
-                </LinkButton>
-            </footer>
-        </article>
-    ))
-}
+                </footer>
+            </article>
+        ))
+    }
 </section>

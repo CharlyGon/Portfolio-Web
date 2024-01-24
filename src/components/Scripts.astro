@@ -1,0 +1,34 @@
+<script>
+	function copyToClipboard(text: string) {
+		navigator.clipboard
+			.writeText(text)
+			.then(() => {
+				const copyMessage = document.getElementById("copyMessage");
+				if (copyMessage) {
+					copyMessage.classList.remove("hidden");
+
+					setTimeout(() => {
+						copyMessage.classList.add("hidden");
+					}, 500);
+				}
+			})
+			.catch((err) => {
+				console.error(
+					"No se pudo copiar el texto al portapapeles",
+					err,
+				);
+			});
+	}
+
+	const emailLink = document.getElementById("emailLink");
+	if (emailLink) {
+		emailLink.addEventListener("click", function (event) {
+			event.preventDefault();
+
+			const email =
+				emailLink?.getAttribute("href")?.replace("mailto:", "") || "";
+
+			copyToClipboard(email);
+		});
+	}
+</script>

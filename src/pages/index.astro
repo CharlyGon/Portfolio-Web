@@ -11,12 +11,15 @@ import BriefcaseIcon from "../components/icons/Briefcase.astro";
 import CodeIcon from "../components/icons/Code.astro";
 import Projects from "../components/Projects.astro";
 import UserIcon from "../components/icons/User.astro";
-import AboutMe from "../components/AboutMy.astro";
+import AboutMe from "../components/AboutMe.astro";
+import FormContact from "../components/FormContact.astro";
+import AddressIcon from "../components/icons/Address.astro";
+import Scripts from "@/components/Scripts.astro";
 ---
 
 <Layout title="Gonzalo Fernández." description="Desarrollador web y backend.">
 	<main class="px-4">
-		<SectionConteiner class="py-40 pb-32">
+		<SectionConteiner id="home" class="py-40 pb-32">
 			<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
 			<img
 				class="rounded mb-7 max-h-56"
@@ -61,9 +64,14 @@ import AboutMe from "../components/AboutMy.astro";
 					<GitHubIcon class="size-4 md:size-6" />
 					GitHub
 				</SocialPill>
-				<SocialPill href="mailto:fernandez-gonza@hotmail.com">
+				<SocialPill
+					id="emailLink"
+					href="mailto:fernandez-gonza@hotmail.com"
+				>
+					<Scripts />
 					<MailIcon class="size-4 md:size-6" />
 					fernandez-gonza@hotmail.com
+					<span id="copyMessage" class="hidden text-violet-500">Copied</span>
 				</SocialPill>
 			</nav>
 		</SectionConteiner>
@@ -84,12 +92,20 @@ import AboutMe from "../components/AboutMy.astro";
 			<Projects />
 		</SectionConteiner>
 
-		<SectionConteiner id="aboutmy">
+		<SectionConteiner id="aboutme">
 			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 				<UserIcon class="size-7" />
 				About
 			</h2>
 			<AboutMe />
 		</SectionConteiner>
+		<SectionConteiner id="contact">
+			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+				<AddressIcon class="size-7" />
+				Contact
+			</h2>
+			<FormContact />
+		</SectionConteiner>
+		<!-- Script para copiar al portapapeles -->
 	</main>
 </Layout>

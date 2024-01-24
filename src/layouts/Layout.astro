@@ -29,10 +29,10 @@ const { title, description } = Astro.props;
 			style="background: radial-gradient(125% 125% at 50% 90%, #000 40%, #63e 100%);"
 		>
 		</div>
-		<Header/>
-		<slot/>
+		<Header />
+		<slot />
 		<footer>
-			<Footer/>
+			<Footer />
 		</footer>
 	</body>
 </html>
@@ -57,14 +57,14 @@ const { title, description } = Astro.props;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
+		html {
+			scroll-behavior: auto;
+		}
+	}
 
-  @media (prefers-color-scheme: dark) {
-    body {
-      color: rgba(255, 255, 255, 0.9);
-    }
-  }
+	@media (prefers-color-scheme: dark) {
+		body {
+			color: rgba(255, 255, 255, 0.9);
+		}
+	}
 </style>
