@@ -15,6 +15,7 @@ import AboutMe from "../components/AboutMe.astro";
 import FormContact from "../components/FormContact.astro";
 import AddressIcon from "../components/icons/Address.astro";
 import Scripts from "@/components/Scripts.astro";
+import HackerRank from "@/components/icons/HackerRank.astro";
 ---
 
 <Layout title="Gonzalo Fernández." description="Desarrollador web y backend.">
@@ -26,7 +27,7 @@ import Scripts from "@/components/Scripts.astro";
 				src="/projects/gonzalo.webp"
 				alt="gonzalo photo"
 				class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6"
-        		style="object-position: 50% 50%"
+				style="object-position: 50% 50%"
 			/>
 
 			<h1
@@ -46,8 +47,7 @@ import Scripts from "@/components/Scripts.astro";
 			<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
 				<span>+3 años de experiencia.</span>
 				Me especializo en
-				<span class="text-yellow-200/90"
-					>Desarrollo web y backend.</span
+				<span class="text-yellow-200/90">Desarrollo web y backend.</span
 				>
 				Recido en
 				<span class="text-red-200/90">San Cayetano, Argentina.</span>
@@ -68,6 +68,13 @@ import Scripts from "@/components/Scripts.astro";
 					<GitHubIcon class="size-4 md:size-6" />
 					GitHub
 				</SocialPill>
+
+				<SocialPill
+					href="https://www.hackerrank.com/profile/GonzaloFernandez"
+				>
+					<HackerRank class="size-4 md:size-6" />
+					HackerRank
+				</SocialPill>
 				<SocialPill
 					id="emailLink"
 					href="mailto:fernandez-gonza@hotmail.com"
@@ -75,7 +82,9 @@ import Scripts from "@/components/Scripts.astro";
 					<Scripts />
 					<MailIcon class="size-4 md:size-6" />
 					fernandez-gonza@hotmail.com
-					<span id="copyMessage" class="hidden text-violet-500">Copied</span>
+					<span id="copyMessage" class="hidden text-violet-500"
+						>Copied</span
+					>
 				</SocialPill>
 			</nav>
 		</SectionConteiner>
