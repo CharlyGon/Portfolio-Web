@@ -21,13 +21,16 @@ import Scripts from "@/components/Scripts.astro";
 	<main class="px-4">
 		<SectionConteiner id="home" class="py-40 pb-32">
 			<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
+			<!-- class="rounded mb-7 max-h-56" -->
 			<img
-				class="rounded mb-7 max-h-56"
 				src="/projects/gonzalo.webp"
 				alt="gonzalo photo"
+				class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6"
+        		style="object-position: 50% 50%"
 			/>
+
 			<h1
-				class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+				class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 order-2"
 			>
 				Hey, Soy Gonzalo.
 				<a
@@ -39,6 +42,7 @@ import Scripts from "@/components/Scripts.astro";
 					<Badge>Download CV</Badge>
 				</a>
 			</h1>
+
 			<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
 				<span>+3 años de experiencia.</span>
 				Me especializo en

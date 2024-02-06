@@ -1,65 +1,93 @@
 ---
-import SunIcon from "./icons/Sun.astro"
-import MoonIcon from "./icons/Moon.astro"
+import SunIcon from "./icons/Sun.astro";
+import MoonIcon from "./icons/Moon.astro";
 
-const THEMES = ["Light", "Dark"]
+const THEMES = ["Light", "Dark"];
 ---
 
 <div class="relative ml-5 mr-1">
-  <button
-    id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
-  >
-    <SunIcon
-        id="light"
-        class="theme-toggle-icon size-6 transition-all"
-    />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon size-5 transition-all"
-    />
-  </button>
+    <button
+        id="theme-toggle-btn"
+        class="appearance-none border-none flex hover:scale-125 transition"
+    >
+        <SunIcon id="light" class="theme-toggle-icon size-7 transition-all" />
+        <MoonIcon id="dark" class="theme-toggle-icon size-7 transition-all" />
+    </button>
 </div>
 
 <style>
-  .theme-toggle-icon {
-    display: none;
-  }
+    .theme-toggle-icon {
+        display: none;
+    }
 
-  .theme-toggle-icon.show {
-    display: block;
-  }
+    .theme-toggle-icon.show {
+        display: block;
+    }
 </style>
 
 <script is:inline>
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "light"
-    }
-    return "light"
-  }
+    const getThemePreference = () => {
+        if (typeof localStorage !== "undefined") {
+            return localStorage.getItem("theme") ?? "light";
+        }
+        return "light";
+    };
 
-  const updateIcon = (themePreference) => {
-    const icons = document.querySelectorAll(".theme-toggle-icon")
-    icons.forEach((icon) => {
-      icon.classList.remove("show")
-    })
-    document.getElementById(themePreference).classList.add("show")
-  }
+    const updateIcon = (themePreference) => {
+        const icons = document.querySelectorAll(".theme-toggle-icon");
+        icons.forEach((icon) => {
+            icon.classList.remove("show");
+        });
+        document.getElementById(themePreference).classList.add("show");
+    };
 
-  const updateTheme = () => {
-    const themePreference = getThemePreference()
-    updateIcon(themePreference)
-    document.documentElement.classList[themePreference === "dark" ? "add" : "remove"]("dark")
-    document.documentElement.classList[themePreference === "light" ? "add" : "remove"]("light-mode")
-  }
+    const updateTheme = () => {
+        const themePreference = getThemePreference();
+        updateIcon(themePreference);
+        document.documentElement.classList[
+            themePreference === "dark" ? "add" : "remove"
+        ]("dark");
+        document.documentElement.classList[
+            themePreference === "light" ? "add" : "remove"
+        ]("light-mode");
 
-  updateTheme()
+        // Aplicar el estilo del fondo dependiendo del tema seleccionado
+        const backgroundStyle =
+            themePreference === "light" ? "bg-white" : "bg-black";
+        const gradientColor =
+            themePreference === "dark"
+                ? "#000 40%, #63e 100%"
+                : "#fff 40%, #63e 100%"; // Cambiar #fff para el fondo blanco
+        document
+            .getElementById("background-div")
+            .setAttribute(
+                "class",
+                `absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 ${backgroundStyle}`,
+            );
+        document
+            .getElementById("background-div")
+            .setAttribute(
+                "style",
+                `background: radial-gradient(125% 125% at 50% 90%, ${gradientColor});`,
+            );
 
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    const themePreference = getThemePreference()
-    const newTheme = themePreference === "light" ? "dark" : "light"
-    localStorage.setItem("theme", newTheme)
-    updateTheme()
-  })
+        // Cambiar el color de fondo del body dependiendo del tema seleccionado
+        const body = document.querySelector("body");
+        if (themePreference === "dark") {
+            body.style.backgroundColor = "#000";
+        } else {
+            body.style.backgroundColor = "#fff";
+        }
+    };
+
+    updateTheme();
+
+    document
+        .getElementById("theme-toggle-btn")
+        .addEventListener("click", (e) => {
+            const themePreference = getThemePreference();
+            const newTheme = themePreference === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            updateTheme();
+        });
 </script>
