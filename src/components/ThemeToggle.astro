@@ -1,0 +1,65 @@
+---
+import SunIcon from "./icons/Sun.astro"
+import MoonIcon from "./icons/Moon.astro"
+
+const THEMES = ["Light", "Dark"]
+---
+
+<div class="relative ml-5 mr-1">
+  <button
+    id="theme-toggle-btn"
+    class="appearance-none border-none flex hover:scale-125 transition"
+  >
+    <SunIcon
+        id="light"
+        class="theme-toggle-icon size-6 transition-all"
+    />
+    <MoonIcon
+      id="dark"
+      class="theme-toggle-icon size-5 transition-all"
+    />
+  </button>
+</div>
+
+<style>
+  .theme-toggle-icon {
+    display: none;
+  }
+
+  .theme-toggle-icon.show {
+    display: block;
+  }
+</style>
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") ?? "light"
+    }
+    return "light"
+  }
+
+  const updateIcon = (themePreference) => {
+    const icons = document.querySelectorAll(".theme-toggle-icon")
+    icons.forEach((icon) => {
+      icon.classList.remove("show")
+    })
+    document.getElementById(themePreference).classList.add("show")
+  }
+
+  const updateTheme = () => {
+    const themePreference = getThemePreference()
+    updateIcon(themePreference)
+    document.documentElement.classList[themePreference === "dark" ? "add" : "remove"]("dark")
+    document.documentElement.classList[themePreference === "light" ? "add" : "remove"]("light-mode")
+  }
+
+  updateTheme()
+
+  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
+    const themePreference = getThemePreference()
+    const newTheme = themePreference === "light" ? "dark" : "light"
+    localStorage.setItem("theme", newTheme)
+    updateTheme()
+  })
+</script>
