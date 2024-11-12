@@ -16,10 +16,20 @@ import FormContact from "../components/FormContact.astro";
 import AddressIcon from "../components/icons/Address.astro";
 import Scripts from "@/components/Scripts.astro";
 import HackerRank from "@/components/icons/HackerRank.astro";
+import PaticlesComponent from "@/components/ParticlesComponent.astro";
+import "./index.css";
 ---
 
+<head>
+	<script
+		src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"
+	></script>
+</head>
+
 <Layout title="Gonzalo Fernández." description="Desarrollador web y backend.">
-	<main class="px-4">
+	<div id="particles-js" class="particles-background"></div>
+	<PaticlesComponent />
+	<main class="px-4 relative"> </div>
 		<SectionConteiner id="home" class="py-40 pb-32">
 			<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
 			<!-- class="rounded mb-7 max-h-56" -->
@@ -35,12 +45,12 @@ import HackerRank from "@/components/icons/HackerRank.astro";
 			>
 				Hey, Soy Gonzalo.
 				<a
-					href="/projects/CV-Gonzalo-Fernandez.pdf"
+					href="/projects/CV_Gonzalo_Fernandez.pdf"
 					target="_blank"
 					rel="noopener"
-					class="flex justify-center items-center hover:scale-105 transition-all duration-300 ease-in-out "
+					class="flex justify-center items-center hover:scale-105 transition-all duration-300 ease-in-out"
 				>
-					<Badge >Download CV</Badge>
+					<Badge>Download CV</Badge>
 				</a>
 			</h1>
 
@@ -120,5 +130,5 @@ import HackerRank from "@/components/icons/HackerRank.astro";
 			</h2>
 			<FormContact />
 		</SectionConteiner>
-	</main>
+	</main>>
 </Layout>

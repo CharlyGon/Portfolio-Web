@@ -1,16 +1,57 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const script = document.createElement("script");
-        script.src =
-            "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-        script.async = true;
-        document.body.appendChild(script);
-
-        script.onload = () => {
-            const particlesConfigScript = document.createElement("script");
-            particlesConfigScript.src = "../../particles-config.js";
-            particlesConfigScript.async = true;
-            document.body.appendChild(particlesConfigScript);
-        };
+       // Agrega `particles.js` desde el CDN
+       const script = document.createElement("script");
+       script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+       script.async = true;
+       document.body.appendChild(script);
+ 
+       // Cuando `particles.js` haya cargado, inicializa la configuración
+       script.onload = () => {
+          particlesJS("particles-js", {
+             "particles": {
+                "number": {
+                   "value": 50,
+                   "density": {
+                      "enable": true,
+                      "value_area": 800
+                   }
+                },
+                "color": {
+                   "value": "#ffffff"
+                },
+                "shape": {
+                   "type": "circle",
+                   "stroke": {
+                      "width": 0,
+                      "color": "#000000"
+                   }
+                },
+                "opacity": {
+                   "value": 0.5,
+                   "random": true,
+                   "anim": {
+                      "enable": true,
+                      "speed": 1,
+                      "opacity_min": 0,
+                      "sync": false
+                   }
+                },
+                "size": {
+                   "value": 1
+                },
+                "move": {
+                   "enable": true,
+                   "speed": 2,
+                   "direction": "none",
+                   "random": false,
+                   "straight": false,
+                   "out_mode": "out",
+                   "bounce": false
+                }
+             }
+          });
+       };
     });
-</script>
+ </script>
+ 
