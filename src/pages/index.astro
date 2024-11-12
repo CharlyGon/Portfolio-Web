@@ -21,6 +21,7 @@ import "./index.css";
 ---
 
 <head>
+	<meta charset="UTF-8" />
 	<script
 		src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"
 	></script>
@@ -29,106 +30,105 @@ import "./index.css";
 <Layout title="Gonzalo Fernández." description="Desarrollador web y backend.">
 	<div id="particles-js" class="particles-background"></div>
 	<PaticlesComponent />
-	<main class="px-4 relative"> </div>
-		<SectionConteiner id="home" class="py-40 pb-32">
-			<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
-			<!-- class="rounded mb-7 max-h-56" -->
-			<img
-				src="/projects/gonzalo.webp"
-				alt="gonzalo photo"
-				class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6"
-				style="object-position: 50% 50%"
-			/>
+	<main class="px-4 relative"></main>
+	<SectionConteiner id="home" class="py-40 pb-32">
+		<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
+		<!-- class="rounded mb-7 max-h-56" -->
+		<img
+			src="/projects/gonzalo.webp"
+			alt="gonzalo photo"
+			class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6"
+			style="object-position: 50% 50%"
+		/>
 
-			<h1
-				class="text-white text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 order-2"
+		<h1
+			class="text-white text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 order-2"
+		>
+			Hey, Soy Gonzalo.
+			<a
+				href="/projects/CV_Gonzalo_Fernandez.pdf"
+				target="_blank"
+				rel="noopener"
+				class="flex justify-center items-center hover:scale-105 transition-all duration-300 ease-in-out"
 			>
-				Hey, Soy Gonzalo.
-				<a
-					href="/projects/CV_Gonzalo_Fernandez.pdf"
-					target="_blank"
-					rel="noopener"
-					class="flex justify-center items-center hover:scale-105 transition-all duration-300 ease-in-out"
+				<Badge>Download CV</Badge>
+			</a>
+		</h1>
+
+		<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
+			<span>+3 años de experiencia.</span>
+			Me especializo en
+			<span class="text-yellow-200/90">Desarrollo web y backend.</span>
+			Recido en
+			<span class="text-red-200/90">San Cayetano, Argentina.</span>
+			<span class="opacity-80"
+				>Preparado para crear soluciones informáticas innovadoras y
+				eficientes.</span
+			>
+		</h2>
+
+		<nav class="flex gap-4 mt-8 flex-wrap">
+			<SocialPill
+				href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
+			>
+				<LinkedInIcon class="size-4 md:size-6" />
+				LinkedIn
+			</SocialPill>
+			<SocialPill href="https://github.com/CharlyGon">
+				<GitHubIcon class="size-4 md:size-6" />
+				GitHub
+			</SocialPill>
+
+			<SocialPill
+				href="https://www.hackerrank.com/profile/GonzaloFernandez"
+			>
+				<HackerRank class="size-4 md:size-6" />
+				HackerRank
+			</SocialPill>
+			<SocialPill
+				id="emailLink"
+				href="mailto:fernandez-gonza@hotmail.com"
+			>
+				<Scripts />
+				<MailIcon class="size-4 md:size-6" />
+				fernandez-gonza@hotmail.com
+				<span id="copyMessage" class="hidden text-violet-500"
+					>Copied</span
 				>
-					<Badge>Download CV</Badge>
-				</a>
-			</h1>
+			</SocialPill>
+		</nav>
+	</SectionConteiner>
 
-			<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
-				<span>+3 años de experiencia.</span>
-				Me especializo en
-				<span class="text-yellow-200/90">Desarrollo web y backend.</span
-				>
-				Recido en
-				<span class="text-red-200/90">San Cayetano, Argentina.</span>
-				<span class="opacity-80"
-					>Preparado para crear soluciones informáticas innovadoras y
-					eficientes.</span
-				>
-			</h2>
+	<SectionConteiner id="experience">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			<BriefcaseIcon class="size-7" />
+			Experiencia Laboral
+		</h2>
+		<Experience />
+	</SectionConteiner>
 
-			<nav class="flex gap-4 mt-8 flex-wrap">
-				<SocialPill
-					href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
-				>
-					<LinkedInIcon class="size-4 md:size-6" />
-					LinkedIn
-				</SocialPill>
-				<SocialPill href="https://github.com/CharlyGon">
-					<GitHubIcon class="size-4 md:size-6" />
-					GitHub
-				</SocialPill>
+	<SectionConteiner id="projects">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			<CodeIcon class="size-7" />
+			Proyectos
+		</h2>
+		<Projects />
+	</SectionConteiner>
 
-				<SocialPill
-					href="https://www.hackerrank.com/profile/GonzaloFernandez"
-				>
-					<HackerRank class="size-4 md:size-6" />
-					HackerRank
-				</SocialPill>
-				<SocialPill
-					id="emailLink"
-					href="mailto:fernandez-gonza@hotmail.com"
-				>
-					<Scripts />
-					<MailIcon class="size-4 md:size-6" />
-					fernandez-gonza@hotmail.com
-					<span id="copyMessage" class="hidden text-violet-500"
-						>Copied</span
-					>
-				</SocialPill>
-			</nav>
-		</SectionConteiner>
+	<SectionConteiner id="aboutMe">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			<UserIcon class="size-7" />
+			About Me
+		</h2>
+		<AboutMe />
+	</SectionConteiner>
 
-		<SectionConteiner id="experience">
-			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-				<BriefcaseIcon class="size-7" />
-				Experiencia Laboral
-			</h2>
-			<Experience />
-		</SectionConteiner>
+	<SectionConteiner id="contact">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			<AddressIcon class="size-7" />
+			Contact
+		</h2>
+		<FormContact />
+	</SectionConteiner>
+</Layout>>
 
-		<SectionConteiner id="projects">
-			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-				<CodeIcon class="size-7" />
-				Proyectos
-			</h2>
-			<Projects />
-		</SectionConteiner>
-
-		<SectionConteiner id="aboutMe">
-			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-				<UserIcon class="size-7" />
-				About Me
-			</h2>
-			<AboutMe />
-		</SectionConteiner>
-
-		<SectionConteiner id="contact">
-			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-				<AddressIcon class="size-7" />
-				Contact
-			</h2>
-			<FormContact />
-		</SectionConteiner>
-	</main>>
-</Layout>
