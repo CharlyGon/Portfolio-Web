@@ -1,14 +1,15 @@
 ---
-import type { JSX } from 'astro/jsx-runtime';
+import type { JSX } from "astro/jsx-runtime";
 
 export interface Props {
     title: string;
+    company: string;
     description: string;
     tags?: { name: string; icon: JSX.Element }[];
     date: string;
 }
 
-const { title, description, tags, date } = Astro.props;
+const { title, company, description, tags, date } = Astro.props;
 ---
 
 <div
@@ -17,8 +18,13 @@ const { title, description, tags, date } = Astro.props;
 </div>
 <time
     class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-    >{date}</time
 >
+    {date}
+</time>
+<h4 class="text-lg font-semibold text-gray-900 dark:text-yellow-200">
+    {company}
+</h4>
+
 <h3 class="text-lg font-semibold text-gray-900 dark:text-yellow-200">
     {title}
 </h3>
