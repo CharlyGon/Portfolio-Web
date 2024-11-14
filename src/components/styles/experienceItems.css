@@ -45,8 +45,3 @@ h2.company-title::before {
     font-weight: normal;
     color: #9ca3af;
 }
-
-.icon-hover-effect {
-    display: inline-flex;
-    align-items: center;
-}
