@@ -27,7 +27,7 @@ const navItems = [
         title: "Contact",
         label: "contact",
         url: "/#contact",
-    }
+    },
 ];
 ---
 
@@ -43,35 +43,20 @@ const navItems = [
     `}
     >
         {
-            navItems.map((link) =>
-                link.title === "CV Online" ? (
-                    <Badge>
-                        <a
-                            class={`
-                        ${link.title === "CV Online" ? "selected-link" : ""}
-                    `}
-                            aria-label={link.label}
-                            href={link.url}
-                            target={link.title === "CV Online" ? "_blank" : ""}
-                        >
-                            {link.title}
-                        </a>
-                    </Badge>
-                ) : (
-                    <a
-                        class={`
+            navItems.map((link) => (
+                <a
+                    class={`
                     hover:bg-white/10 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-base capitalize
                     ${link.title === "CV Online" ? "selected-link" : ""}
-                    ${link.title === "Contact"  ? "hidden md:block" : ""}
+                    ${link.title === "Contact" ? "hidden md:block" : ""}
                 `}
-                        aria-label={link.label}
-                        href={link.url}
-                        target={link.title === "CV Online" ? "_blank" : ""}
-                    >
-                        {link.title}
-                    </a>
-                ),
-            )
+                    aria-label={link.label}
+                    href={link.url}
+                    target={link.title === "CV Online" ? "_blank" : ""}
+                >
+                    {link.title}
+                </a>
+            ))
         }
         <ThemeToggle />
     </nav>

@@ -38,7 +38,7 @@ import "./index.css";
 		<img
 			src="/projects/gonzalo.webp"
 			alt="gonzalo photo"
-			class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6"
+			class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6 image-bounce"
 			style="object-position: 50% 50%"
 		/>
 
@@ -103,7 +103,7 @@ import "./index.css";
 	<SectionConteiner id="experience">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<BriefcaseIcon class="size-7" />
-			Experiencia Laboral
+			<span class="animate-title">Experiencia Laboral</span>
 		</h2>
 		<Experience />
 	</SectionConteiner>
@@ -111,7 +111,7 @@ import "./index.css";
 	<SectionConteiner id="projects">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<CodeIcon class="size-7" />
-			Proyectos
+			<span class="animate-title">Proyectos</span>
 		</h2>
 		<Projects />
 	</SectionConteiner>
@@ -119,7 +119,7 @@ import "./index.css";
 	<SectionConteiner id="aboutMe">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<UserIcon class="size-7" />
-			About Me
+			<span class="animate-title">About Me</span>
 		</h2>
 		<AboutMe />
 	</SectionConteiner>
@@ -127,9 +127,8 @@ import "./index.css";
 	<SectionConteiner id="contact">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<AddressIcon class="size-7" />
-			Contact
+			<span class="animate-title"> Contact</span>
 		</h2>
 		<FormContact />
 	</SectionConteiner>
 </Layout>
-
