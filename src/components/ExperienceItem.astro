@@ -44,7 +44,7 @@ const { company, roles } = Astro.props;
                     {role.tags && (
                         <div class="flex flex-wrap mt-3">
                             {role.tags.map((tag) => (
-                                <span class="px-2 py-1 mr-2 mb-2 text-sm font-medium text-gray-900 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-200">
+                                <span class="px-2 py-1 mr-2 mb-2 text-sm font-medium text-gray-900 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-200 hover:bg-white/5 hover:scale-110 transition duration-200 text-xs md:text-base">
                                     <tag.icon class="inline-block mr-1 icon-hover-effect" />
                                 </span>
                             ))}
