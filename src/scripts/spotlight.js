@@ -5,7 +5,6 @@ export default function initCardSpotlight() {
     card.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
 
-  // Delegación global: detecta la card-spot bajo el cursor SIEMPRE
   const onMove = (e) => {
     const card = e.target.closest?.(".card-spot");
     if (!card) return;

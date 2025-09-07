@@ -1,4 +1,6 @@
-<section class="card-spot rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+<section
+    class="card-spot rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8"
+>
     <header class="mb-6">
         <h3 class="text-2xl font-bold">Contacto</h3>
         <p class="text-neutral-300 mt-1">
@@ -9,11 +11,16 @@
     <!-- Acciones rápidas -->
     <div class="flex flex-wrap gap-3 mb-6">
         <button
-            id="copyEmailBtn"
             type="button"
-            class="rounded-xl px-4 py-2 bg-white/10 hover:bg-white/15 transition inline-flex items-center gap-2"
+            data-confetti-copy
+            data-copy-value="fernandez-gonza@hotmail.com"
+            data-copied-label="¡Copiado!"
+            data-confetti="both"
+            class="rounded-xl px-4 py-2 bg-white/10 hover:bg-white/15 transition inline-flex items-center gap-2 relative select-none"
         >
-            📧 <span>Copiar email</span>
+            📧 <span class="pill-label normal">Copiar email</span>
+            <span class="pill-label copied hidden font-semibold">¡Copiado!</span
+            >
         </button>
 
         <a
@@ -90,20 +97,6 @@
     const EMAIL = "fernandez-gonza@hotmail.com";
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnqejnlz";
 
-    // Copiar email
-    const copyBtn = document.getElementById("copyEmailBtn");
-    copyBtn?.addEventListener("click", async () => {
-        try {
-            await navigator.clipboard.writeText(EMAIL);
-            copyBtn.innerHTML = "✅ <span>Email copiado</span>";
-            setTimeout(() => {
-                copyBtn.innerHTML = "📧 <span>Copiar email</span>";
-            }, 1400);
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
     // Envío AJAX a Formspree
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
@@ -142,4 +135,9 @@
             submitBtn.textContent = "Enviar mensaje";
         }
     });
+</script>
+
+<script type="module" is:inline>
+    import initCopyConfetti from "/src/scripts/copy-confetti.js";
+    initCopyConfetti(); // bindea cualquier [data-confetti-copy] en la página
 </script>
