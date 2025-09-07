@@ -18,18 +18,29 @@ const currentYear = new Date().getFullYear();
             >. All Rights Reserved.
         </span>
         <ul
-            class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+            class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 gap-6"
         >
-            <li>
-                <HomeIcon class="w-5 h-5 inline-block mb-1" />
-                <a href="#home" class="hover:underline me-4 md:me-6">Home</a>
+            <li class="flex items-center gap-1 group cursor-pointer">
+                <HomeIcon
+                    class="w-5 h-5 inline-block transform transition duration-300 group-hover:-translate-y-1 group-hover:scale-125 group-hover:text-yellow-400"
+                />
+                <a
+                    href="#home"
+                    class="hover:underline group-hover:text-yellow-400">Home</a
+                >
             </li>
-            <li>
-                <LinkedIn class="w-5 h-5 inline-block mb-1" />
+
+            <li class="flex items-center gap-1 group cursor-pointer">
+                <LinkedIn
+                    class="w-5 h-5 inline-block transform transition duration-300 group-hover:-translate-y-1 group-hover:scale-110 group-hover:text-blue-500"
+                />
                 <a
                     href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez/"
-                    class="hover:underline"
-                    >LinkedIn
+                    class="hover:underline group-hover:text-blue-500"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    LinkedIn
                 </a>
             </li>
         </ul>
