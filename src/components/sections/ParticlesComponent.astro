@@ -1,34 +1,43 @@
-<script>
-    declare var particlesJS: any;
+<div
+    id="particles-js"
+    class="pointer-events-none fixed inset-0 -z-5 w-full h-full"
+>
+</div>
 
-    document.addEventListener("DOMContentLoaded", () => {
-        // Agrega `particles.js` desde el CDN
-        const script = document.createElement("script");
-        script.src =
-            "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-        script.async = true;
-        document.body.appendChild(script);
+<style is:global>
+    /* Por si el canvas no se ajusta bien en algunos navegadores */
+    #particles-js > canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+    }
+</style>
 
-        // Cuando `particles.js` haya cargado, inicializa la configuración
-        script.onload = () => {
-            particlesJS("particles-js", {
+<script is:inline>
+    if (typeof window !== "undefined") {
+        const ensureParticles = () =>
+            new Promise((resolve) => {
+                if (window.particlesJS) return resolve(true);
+                const s = document.createElement("script");
+                s.src =
+                    "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+                s.async = true;
+                s.onload = () => resolve(true);
+                document.body.appendChild(s);
+            });
+
+        ensureParticles().then(() => {
+            // @ts-ignore
+            window.particlesJS("particles-js", {
                 particles: {
                     number: {
                         value: 50,
-                        density: {
-                            enable: true,
-                            value_area: 800,
-                        },
+                        density: { enable: true, value_area: 800 },
                     },
-                    color: {
-                        value: "#ffffff",
-                    },
+                    color: { value: "#ffffff" },
                     shape: {
                         type: "circle",
-                        stroke: {
-                            width: 0,
-                            color: "#000000",
-                        },
+                        stroke: { width: 0, color: "#000000" },
                     },
                     opacity: {
                         value: 0.5,
@@ -40,20 +49,17 @@
                             sync: false,
                         },
                     },
-                    size: {
-                        value: 1,
-                    },
+                    size: { value: 1 },
                     move: {
                         enable: true,
                         speed: 2,
-                        direction: "none",
-                        random: false,
-                        straight: false,
                         out_mode: "out",
                         bounce: false,
                     },
                 },
+                interactivity: { detect_on: "canvas" },
+                retina_detect: true,
             });
-        };
-    });
+        });
+    }
 </script>

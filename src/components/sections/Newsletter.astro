@@ -1,0 +1,28 @@
+---
+import NewsletterCard from "./NewsletterCard.astro";
+import data from "@/data/newsletter.json";
+const posts = data;
+---
+
+<section class="space-y-6">
+    <header class="mb-2">
+        <p class="opacity-80">
+            Creciendo con Código — publicaciones seleccionadas en LinkedIn.
+        </p>
+    </header>
+
+    <div class="grid gap-6 md:grid-cols-2">
+        {posts.map((p) => <NewsletterCard {...p} />)}
+    </div>
+
+    <footer class="pt-4 pb-10">
+        <a
+            href="https://www.linkedin.com/newsletters/7246865774626193409/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl px-4 py-2 ring-1 ring-white/15 hover:bg-white/5 inline-flex items-center gap-2"
+        >
+            Ver todas en LinkedIn ↗
+        </a>
+    </footer>
+</section>

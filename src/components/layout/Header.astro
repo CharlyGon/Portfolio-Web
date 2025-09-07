@@ -1,120 +1,101 @@
 ---
-import Badge from "../ui/Badge.astro";
-import ThemeToggle from "./ThemeToggle.astro";
-
 const navItems = [
-    {
-        title: "Home",
-        label: "home",
-        url: "/#home",
-    },
-    {
-        title: "Experience",
-        label: "experience",
-        url: "/#experience",
-    },
-    {
-        title: "Projects",
-        label: "projects",
-        url: "/#projects",
-    },
-    {
-        title: "About Me",
-        label: "aboutMe",
-        url: "/#aboutMe",
-    },
-    {
-        title: "Contact",
-        label: "contact",
-        url: "/#contact",
-    },
+    { title: "Home", label: "home", url: "/#home" },
+    { title: "Experience", label: "experience", url: "/#experience" },
+    { title: "Projects", label: "projects", url: "/#projects" },
+    { title: "About Me", label: "aboutMe", url: "/#aboutMe" },
+    { title: "Contact", label: "contact", url: "/#contact" },
+    { title: "Newsletter", label: "newsletter", url: "/#newsletter" },
 ];
 ---
 
-<header
-    class="h-14 w-full xl:w-[1620px] flex justify-center items-center mx-auto pt-2 sticky top-0 w-full z-10"
->
+<header class="sticky top-0 z-50 w-full">
+    <!-- wrapper sin fondo ni blur para evitar la “barra ancha” -->
     <nav
-        class={`
-      w-full md:w-3/4 lg:w-1/2 xl:w-2/5 h-full
-      border-2 border-gray-500 rounded-full md:px-6 px-3 py-1
-      flex flex-wrap flex-row items-center justify-center
-      bg-neutral-200/70 dark:bg-black/50 backdrop-blur-2xl
-    `}
+        aria-label="Principal"
+        class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-center pointer-events-none"
     >
-        {
-            navItems.map((link) => (
-                <a
-                    class={`
-                    hover:bg-white/10 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-base capitalize
-                    ${link.title === "CV Online" ? "selected-link" : ""}
-                    ${link.title === "Contact" ? "hidden md:block" : ""}
-                `}
-                    aria-label={link.label}
-                    href={link.url}
-                    target={link.title === "CV Online" ? "_blank" : ""}
-                >
-                    {link.title}
-                </a>
-            ))
-        }
-        <ThemeToggle />
-    </nav>
-</header>
-
-<script>
-    document.addEventListener("astro:page-load", () => {
-        const sections = document.querySelectorAll("section");
-        const navItems = document.querySelectorAll("header nav a");
-
-        const callback = (entries: any[]) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    navItems.forEach((item) => {
-                        if (
-                            item.getAttribute("aria-label") == entry.target.id
-                        ) {
-                            item.classList.add("link-active");
-                        } else {
-                            item.classList.remove("link-active");
-                        }
-                    });
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(callback, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.3,
-        });
-
-        sections.forEach((section) => {
-            observer.observe(section);
-        });
-
-        // Cleanup function
-        // window.onunload = () => {
-        //     observer.disconnect();
-        // };
-        document.onvisibilitychange = () => {
-            if (document.visibilityState === "hidden") {
-                observer.disconnect();
+        <!-- la pastilla sí tiene fondo/blur y recibe el estado de scroll -->
+        <div
+            id="header-nav"
+            class="pointer-events-auto inline-flex items-center justify-center gap-1 whitespace-nowrap
+                rounded-full px-2 sm:px-3 py-1 border border-white/10
+                bg-black/20 backdrop-blur-md shadow-sm transition-colors"
+        >
+            {
+                navItems.map((link) => (
+                    <a
+                        class="hover:bg-white/10 px-3 py-1 rounded-full transition text-sm capitalize"
+                        aria-label={link.label}
+                        href={link.url}
+                    >
+                        {link.title}
+                    </a>
+                ))
             }
-        };
-    });
-</script>
+        </div>
+    </nav>
 
-<style>
-    nav {
-        animation: nav-shadown 1s linear both;
-        animation-timeline: scroll();
-        animation-range: 0 100px;
-    }
+    <script>
+        document.addEventListener("astro:page-load", () => {
+            const header = document.querySelector("header");
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(
+                "header nav a[aria-label]",
+            );
 
-    @keyframes nav-shadown {
-        to {
-            @apply shadow-lg ring-1 backdrop-blur bg-gray-100/20 dark:bg-gray-600/50 ring-white/10;
+            if (!header) return;
+
+            // Estado de scroll: sólo cambia la pastilla, no el <nav>
+            const onScroll = () => {
+                if (window.scrollY > 8) {
+                    header.setAttribute("data-scrolled", "1");
+                } else {
+                    header.removeAttribute("data-scrolled");
+                }
+            };
+            onScroll();
+            window.addEventListener("scroll", onScroll, { passive: true });
+
+            // Active link por intersección
+            const io = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (!e.isIntersecting) return;
+                        navLinks.forEach((a) => {
+                            a.classList.toggle(
+                                "link-active",
+                                a.getAttribute("aria-label") === e.target.id,
+                            );
+                        });
+                    });
+                },
+                { threshold: 0.3 },
+            );
+            sections.forEach((s) => io.observe(s));
+            document.addEventListener("visibilitychange", () => {
+                if (document.visibilityState === "hidden") io.disconnect();
+            });
+        });
+    </script>
+
+    <style>
+        /* estilo del link activo (sutil, profesional) */
+        .link-active {
+            @apply bg-white/10 text-white;
         }
-    }
-</style>
+
+        /* al hacer scroll, sólo intensificamos la pastilla */
+        header[data-scrolled] #header-nav {
+            @apply bg-black/40 backdrop-blur-2xl ring-1 ring-white/10 shadow-lg border-white/20;
+        }
+
+        /* opcional: que los anchors no queden ocultos bajo el sticky */
+        :root {
+            scroll-padding-top: theme(spacing.16);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</header>

@@ -1,134 +1,67 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Badge from "../components/ui/Badge.astro";
-import LinkedInIcon from "../components/icons/LinkedIn.astro";
-import GitHubIcon from "../components/icons/GitHub.astro";
-import SocialPill from "../components/ui/SocialPill.astro";
-import MailIcon from "../components/icons/Mail.astro";
-import SectionConteiner from "../components/sections/SectionConteiner.astro";
+import Hero from "../components/sections/Hero.astro";
 import BriefcaseIcon from "../components/icons/Briefcase.astro";
 import CodeIcon from "../components/icons/Code.astro";
 import Projects from "../components/sections/Projects.astro";
 import UserIcon from "../components/icons/User.astro";
 import FormContact from "../components/sections/FormContact.astro";
 import AddressIcon from "../components/icons/Address.astro";
-import Scripts from "@/components/Scripts.astro";
-import HackerRank from "@/components/icons/HackerRank.astro";
-import PaticlesComponent from "@/components/sections/ParticlesComponent.astro";
-import "../styles/globals.css";
 import Experience from "@/components/sections/Experience.astro";
-import AboutMe from "./AboutMe.astro";
+import AboutMe from "@/components/sections/AboutMe.astro";
+import Newsletter from "@/components/sections/Newsletter.astro";
+
+import "../styles/globals.css";
 ---
 
-<head>
-	<meta charset="UTF-8" />
-	<script
-		src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"
-	></script>
-</head>
+<Layout
+	title="Gonzalo Fernández — Backend Node.js/TS"
+	description="Desarrollo backend escalable con Node.js & TypeScript."
+>
+	<Hero />
 
-<Layout title="Gonzalo Fernández." description="Desarrollador web y backend.">
-	<div id="particles-js" class="particles-background"></div>
-	<PaticlesComponent />
-
-	<main class="px-4 relative"></main>
-	<SectionConteiner id="home" class="py-40 pb-32">
-		<!-- class="rounded mb-7 md:h-32 lg:h-40 xl:h-48 2xl:h-56" -->
-		<!-- class="rounded mb-7 max-h-56" -->
-		<img
-			src="/projects/gonzalo.webp"
-			alt="gonzalo photo"
-			class="order-1 object-cover w-64 h-full p-1 bg-white md:order-2 rotate-1 lg:p-2 lg:w-64 aspect-square rounded-2xl dark:bg-yellow-500/5 ring-1 ring-white/20 mb-6 image-bounce"
-			style="object-position: 50% 50%"
-		/>
-
-		<h1
-			class="text-white text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 order-2"
-		>
-			Hey, Soy Gonzalo.
-			<a
-				href="/projects/CV_Gonzalo_Fernandez.pdf"
-				target="_blank"
-				rel="noopener"
-				class="flex justify-center items-center hover:scale-105 transition-all duration-300 ease-in-out"
-			>
-				<Badge>Download CV</Badge>
-			</a>
-		</h1>
-
-		<h2 class="text-xl lg:text-2xl opacity-80 tex-wrap max-w[700px]">
-			<span>+3 años de experiencia.</span>
-			Me especializo en
-			<span class="text-yellow-200/90">Desarrollo web y backend.</span>
-			Recido en
-			<span class="text-red-200/90">San Cayetano, Argentina.</span>
-			<span class="opacity-80"
-				>Preparado para crear soluciones informáticas innovadoras y
-				eficientes.</span
-			>
-		</h2>
-
-		<nav class="flex gap-4 mt-8 flex-wrap">
-			<SocialPill
-				href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
-			>
-				<LinkedInIcon class="size-4 md:size-6" />
-				LinkedIn
-			</SocialPill>
-			<SocialPill href="https://github.com/CharlyGon">
-				<GitHubIcon class="size-4 md:size-6" />
-				GitHub
-			</SocialPill>
-
-			<SocialPill
-				href="https://www.hackerrank.com/profile/GonzaloFernandez"
-			>
-				<HackerRank class="size-4 md:size-6" />
-				HackerRank
-			</SocialPill>
-			<SocialPill
-				id="emailLink"
-				href="mailto:fernandez-gonza@hotmail.com"
-			>
-				<Scripts />
-				<MailIcon class="size-4 md:size-6" />
-				fernandez-gonza@hotmail.com
-				<span id="copyMessage" class="hidden text-violet-500"
-					>Copied</span
-				>
-			</SocialPill>
-		</nav>
-	</SectionConteiner>
-
-	<SectionConteiner id="experience">
+	<section id="experience">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<BriefcaseIcon class="size-7" />
-			<span class="animate-title">Experiencia Laboral</span>
+			<span class="animate-title">Experiencia laboral</span>
 		</h2>
-		<Experience />
-	</SectionConteiner>
+		<div class="w-full mx-auto max-w-[740px] pb-24 px-4">
+			<Experience />
+		</div>
+	</section>
 
-	<SectionConteiner id="projects">
+	<section id="projects" class="container mx-auto pb-24 px-4 md:px-6 lg:px-8">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<CodeIcon class="size-7" />
 			<span class="animate-title">Proyectos</span>
 		</h2>
 		<Projects />
-	</SectionConteiner>
+	</section>
 
-	<SectionConteiner id="aboutMe">
+	<section id="aboutMe">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<UserIcon class="size-7" />
-			<span class="animate-title">About Me</span>
+			<span class="animate-title">Sobre mí</span>
 		</h2>
-		<AboutMe />
-	</SectionConteiner>
+		<div class="w-full mx-auto max-w-[740px] pb-24 px-4">
+			<AboutMe />
+		</div>
 
-	<SectionConteiner id="contact">
-		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-			<AddressIcon class="size-7" />
-			<span class="animate-title"> Contact</span>
-		</h2>
-		<FormContact />
-	</SectionConteiner>
+		<section id="contact">
+			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+				<AddressIcon class="size-7" />
+				<span class="animate-title">Contacto</span>
+			</h2>
+			<div class="w-full mx-auto max-w-[740px] pb-24 px-4">
+				<FormContact />
+			</div>
+		</section>
+
+		<section id="newsletter">
+			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+				📬 <span class="animate-title">Newsletter</span>
+			</h2>
+			<Newsletter />
+		</section>
+	</section>
 </Layout>

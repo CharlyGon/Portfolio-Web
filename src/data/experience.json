@@ -1,0 +1,121 @@
+[
+    {
+        "company": "Simple AI",
+        "logo": "/companies/SimpleIA.png",
+        "role": "Backend Developer",
+        "period": "Nov 2024 – Jun 2025",
+        "summary": "Desarrollo de soluciones backend combinando IA y experiencia humana para optimizar procesos operativos.",
+        "impact": [
+            "Automatización de flujos operativos, reduciendo errores manuales.",
+            "Funciones serverless con Node.js en AWS Lambda para tiempos de procesamiento más bajos.",
+            "Trabajo en equipo ágil (Scrum) asegurando entregas continuas."
+        ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "AWS Lambda",
+            "Serverless",
+            "Scrum"
+        ],
+        "url": "https://www.linkedin.com/company/simpleai/"
+    },
+    {
+        "company": "Dam Squad",
+        "logo": "/companies/DamSquad.png",
+        "role": "Backend Developer",
+        "period": "May 2024 – Oct 2024",
+        "summary": "Backend para una plataforma de gestión de usuarios con pagos y manejo documental.",
+        "impact": [
+            "Integración de Stripe para pagos y notificaciones automáticas.",
+            "Sistema de intercambio de documentos con hitos automáticos.",
+            "Entregas regulares en entorno ágil (Scrum)."
+        ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "Stripe",
+            "PostgreSQL",
+            "Scrum"
+        ],
+        "url": "https://www.linkedin.com/company/damsquadok/"
+    },
+    {
+        "company": "Blue Bit Software",
+        "logo": "/companies/BlueBitSoftware.png",
+        "role": "Backend Developer",
+        "period": "Sept 2021 – Abr 2024",
+        "summary": "Desarrollo de sistemas backend enfocados en documentos y blockchain.",
+        "impact": [
+            "Versionador de documentos con firma digital y roles de usuario.",
+            "Almacenamiento seguro en AWS S3 con claves privadas gestionadas por KMS.",
+            "Despliegues manuales en AWS (ECR, EC2) y documentación técnica detallada."
+        ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "MongoDB",
+            "Docker",
+            "AWS (ECR, EC2, S3, KMS)"
+        ],
+        "url": "https://www.linkedin.com/company/blue-bit-software/"
+    },
+    {
+        "company": "Blue Bit Software",
+        "logo": "/companies/BlueBitSoftware.png",
+        "role": "Backend Developer",
+        "period": "Mar 2023 – Ago 2023",
+        "summary": "Backend para plataforma de intercambio de assets virtuales para influencers.",
+        "impact": [
+            "Despliegue de contratos inteligentes en blockchain.",
+            "Gestión de infraestructura escalable en AWS.",
+            "Integración con múltiples blockchains para operaciones seguras."
+        ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "Solidity",
+            "AWS",
+            "Blockchain"
+        ],
+        "url": "https://www.linkedin.com/company/blue-bit-software/"
+    },
+    {
+        "company": "Blue Bit Software",
+        "logo": "/companies/BlueBitSoftware.png",
+        "role": "Software Developer",
+        "period": "Feb 2022 – Jun 2022",
+        "summary": "Desarrollo de un proxy automatizado para superar restricciones geográficas.",
+        "impact": [
+            "Automatización de asignación dinámica de direcciones IP.",
+            "Gestión de infraestructura en la nube para alta disponibilidad.",
+            "Scripts avanzados para reutilizar servicios restringidos."
+        ],
+        "stack": [
+            "Node.js",
+            "Bash",
+            "Docker",
+            "AWS"
+        ],
+        "url": "https://www.linkedin.com/company/blue-bit-software/"
+    },
+    {
+        "company": "Blue Bit Software",
+        "logo": "/companies/BlueBitSoftware.png",
+        "role": "Frontend Developer",
+        "period": "Sept 2020 – Ago 2021",
+        "summary": "Desarrollo y diseño de página de inicio con React y Material-UI.",
+        "impact": [
+            "Implementación de maquetas asegurando consistencia visual.",
+            "Virtualización de aplicaciones con Docker para despliegue ágil.",
+            "Gestión de repositorios y despliegue en AWS."
+        ],
+        "stack": [
+            "React",
+            "JavaScript",
+            "Material-UI",
+            "Docker",
+            "AWS"
+        ],
+        "url": "https://www.linkedin.com/company/blue-bit-software/"
+    }
+]

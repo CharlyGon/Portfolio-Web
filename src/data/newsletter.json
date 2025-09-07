@@ -1,0 +1,42 @@
+[
+    {
+        "id": "post-001",
+        "title": "El corazón de Node.js: El Event Loop explicado",
+        "summary": "Entendé cómo funciona el motor que mantiene vivo a Node.js y por qué es clave para manejar la asincronía.",
+        "date": "2024-01-10",
+        "url": "https://www.linkedin.com/pulse/el-coraz%C3%B3n-de-nodejs-event-loop-explicado-gonzalo-fern%C3%A1ndez-tlfpc/?trackingId=ZBuTjJcvRei2P5vZsrIP3w%3D%3D",
+        "image": "/newsletter/corazon.png"
+    },
+    {
+        "id": "post-002",
+        "title": "Node.js y CI/CD: Automatización de Despliegues Simplificada ⚡",
+        "summary": "Una guía práctica sobre cómo integrar CI/CD en tus proyectos Node.js para despliegues más rápidos y seguros.",
+        "date": "2025-07-01",
+        "url": "https://www.linkedin.com/pulse/nodejs-y-cicd-automatizaci%C3%B3n-de-despliegues-gonzalo-fern%C3%A1ndez-moijf/?trackingId=EFc2H9CVRRuWPznrrZ5YoA%3D%3D",
+        "image": "/newsletter/cd.png"
+    },
+    {
+        "id": "post-003",
+        "title": "Monitoreo y Logging en Node.js: Herramientas y Estrategias",
+        "summary": "Exploramos herramientas como Winston, Pino y cómo monitorear con PM2 y Grafana.",
+        "date": "2024-02-21",
+        "url": "https://www.linkedin.com/pulse/monitoreo-y-logging-en-nodejs-herramientas-gonzalo-fern%C3%A1ndez-ug6mf/?trackingId=Sv7CQTrNSg6vNG5a6WnbsA%3D%3D",
+        "image": "/newsletter/monitoring.png"
+    },
+    {
+        "id": "post-004",
+        "title": "La Gestión de la Memoria en Node.js: Optimización y Prevención de Memory Leaks 🧠",
+        "summary": "Cómo funciona el Garbage Collector y qué patrones usar para evitar fugas de memoria.",
+        "date": "2024-01-09",
+        "url": "https://www.linkedin.com/pulse/la-gesti%C3%B3n-de-memoria-en-nodejs-optimizaci%C3%B3n-y-memory-fern%C3%A1ndez-fvtnf/?trackingId=jfMNinxMQIKc%2BaH5IerxsA%3D%3D",
+        "image": "/newsletter/memory.png"
+    },
+    {
+        "id": "post-005",
+        "title": "Seguridad en Node.js: Protegiendo tu API 🔒",
+        "summary": "Buenas prácticas para asegurar tus APIs y protegerlas contra ataques comunes.",
+        "date": "2024-11-28",
+        "url": "https://www.linkedin.com/pulse/seguridad-en-nodejs-protegiendo-tu-api-gonzalo-fern%C3%A1ndez-hoiwc/?trackingId=WCu%2BJahGSx6mTudDXM%2B6dQ%3D%3D",
+        "image": "/newsletter/security.png"
+    }
+]

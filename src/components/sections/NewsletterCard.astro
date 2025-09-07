@@ -1,0 +1,41 @@
+---
+interface Props {
+    title: string;
+    summary: string;
+    date: string;
+    url: string;
+    image?: string;
+}
+const { title, summary, date, url, image } = Astro.props as Props;
+---
+
+<article
+    class="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/7 transition flex flex-col overflow-hidden"
+>
+    {
+        image && (
+            <a href={url} target="_blank" rel="noopener noreferrer">
+                <img src={image} alt={title} class="w-full h-40 object-cover" />
+            </a>
+        )
+    }
+    <div class="p-5 flex flex-col gap-3">
+        <a href={url} target="_blank" rel="noopener noreferrer" class="group">
+            <h3 class="text-lg font-semibold group-hover:underline">{title}</h3>
+        </a>
+        <p class="opacity-90 text-sm">{summary}</p>
+        <div class="text-xs opacity-70 mt-1">
+            {new Date(date).toLocaleDateString("es-AR")}
+        </div>
+        <div class="mt-2">
+            <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-xl px-3 py-1.5 ring-1 ring-white/15 hover:bg-white/5 inline-flex items-center gap-1 text-sm"
+            >
+                Leer en LinkedIn ↗
+            </a>
+        </div>
+    </div>
+</article>

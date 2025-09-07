@@ -1,63 +1,145 @@
-<!-- <section class="bg-gradient-to-br from-black via-gray-800 to-gray-900 dark:from-purple-900 dark:to-black rounded-lg"> -->
-<div
-    class="rounded-lg"
-    style="background: radial-gradient(125% 155% at 50% 90%, #000 40%, #63e 100%);"
->
-    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-        <p
-            class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl"
-        >
-            ¿Interesado en mi trabajo como desarrollador? ¿Tienes preguntas,
-            propuestas o simplemente quieres conectarte? Estoy aquí para
-            escucharte. ¡No dudes en ponerte en contacto!
+<section class="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+    <header class="mb-6">
+        <h3 class="text-2xl font-bold">Contacto</h3>
+        <p class="text-neutral-300 mt-1">
+            ¿Charlamos sobre cómo puedo aportar a tu equipo? 🚀
         </p>
-        <!-- <form action="#" class="space-y-8"> -->
-        <form
-            action="https://formspree.io/f/mnqejnlz"
-            method="POST"
-            class="space-y-8"
+    </header>
+
+    <!-- Acciones rápidas -->
+    <div class="flex flex-wrap gap-3 mb-6">
+        <button
+            id="copyEmailBtn"
+            type="button"
+            class="rounded-xl px-4 py-2 bg-white/10 hover:bg-white/15 transition inline-flex items-center gap-2"
         >
-            <div>
-                <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >Your email</label
-                >
-                <input
-                    type="email"
-                    id="email"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-                    placeholder="To get in touch, provide your email."
-                    required
-                />
-            </div>
+            📧 <span>Copiar email</span>
+        </button>
 
-            <div class="sm:col-span-2">
-                <label
-                    for="message"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-                    >Your message</label
-                >
-                <textarea
-                    id="message"
-                    rows="6"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Leave a comment..."></textarea>
-            </div>
-
-            <button
-                class="bg-white/5
-                border dark:border-white/10 border-gray-300
-                rounded-full
-                inline-flex justify-center items-center gap-x-2
-                py-1 px-2 md:py-2 md:px-4
-                text-xs md:text-base
-                transition
-                hover:scale-110 hover:bg-white/10
-                focus:ring-4 focus:outline-none focus:ring-primary-300"
-                type="submit"
-                >Send message
-            </button>
-        </form>
+        <a
+            href="https://www.linkedin.com/in/gonzalo-nicolas-fernandez"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl px-4 py-2 ring-1 ring-white/15 hover:bg-white/5 transition inline-flex items-center gap-2"
+        >
+            💼 <span>Escribirme por LinkedIn</span> ↗
+        </a>
     </div>
-</div>
+
+    <!-- Formulario -->
+    <form id="contactForm" class="grid gap-4" novalidate>
+        <!-- Honeypot anti-spam -->
+        <input
+            type="text"
+            name="_gotcha"
+            class="hidden"
+            tabindex="-1"
+            autocomplete="off"
+        />
+
+        <div class="grid gap-2">
+            <label for="name" class="text-sm opacity-80">Tu nombre</label>
+            <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                class="w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2"
+                placeholder="Cómo te llamás"
+            />
+        </div>
+
+        <div class="grid gap-2">
+            <label for="email" class="text-sm opacity-80">Tu email</label>
+            <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                class="w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2"
+                placeholder="nombre@empresa.com"
+            />
+        </div>
+
+        <div class="grid gap-2">
+            <label for="message" class="text-sm opacity-80">Mensaje</label>
+            <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                class="w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2"
+                placeholder="Contame brevemente qué necesitás"></textarea>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button
+                id="submitBtn"
+                type="submit"
+                class="bg-white/10 hover:bg-white/15 rounded-full inline-flex items-center gap-2 px-5 py-2 transition"
+            >
+                Enviar mensaje
+            </button>
+            <span id="formStatus" class="text-sm opacity-80" aria-live="polite"
+            ></span>
+        </div>
+    </form>
+</section>
+
+<script is:inline>
+    const EMAIL = "fernandez-gonza@hotmail.com";
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnqejnlz";
+
+    // Copiar email
+    const copyBtn = document.getElementById("copyEmailBtn");
+    copyBtn?.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(EMAIL);
+            copyBtn.innerHTML = "✅ <span>Email copiado</span>";
+            setTimeout(() => {
+                copyBtn.innerHTML = "📧 <span>Copiar email</span>";
+            }, 1400);
+        } catch (e) {
+            console.error(e);
+        }
+    });
+
+    // Envío AJAX a Formspree
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "";
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando…";
+
+        const formData = new FormData(form);
+        formData.append("_subject", "Nuevo contacto desde el portfolio");
+        formData.append("_data", JSON.stringify({ source: "portfolio-site" }));
+
+        try {
+            const res = await fetch(FORMSPREE_ENDPOINT, {
+                method: "POST",
+                headers: { Accept: "application/json" },
+                body: formData,
+            });
+
+            if (res.ok) {
+                form.reset();
+                statusEl.textContent = "¡Gracias! Te respondo pronto.";
+            } else {
+                statusEl.textContent =
+                    "Hubo un problema al enviar. Probá más tarde o escribime por LinkedIn.";
+            }
+        } catch (err) {
+            console.error(err);
+            statusEl.textContent =
+                "No se pudo enviar. Revisá tu conexión o usá LinkedIn/Email.";
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Enviar mensaje";
+        }
+    });
+</script>

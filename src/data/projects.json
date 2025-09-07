@@ -1,0 +1,115 @@
+[
+    {
+        "slug": "step-runner",
+        "title": "Step Runner (Automations)",
+        "summary": "Orquestación de tareas web headless con Playwright/Puppeteer sobre AWS Lambda.",
+        "impact": "Reducción de ~40% en tiempos de ejecución y trazabilidad completa (logs + screenshots).",
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "Playwright",
+            "AWS Lambda",
+            "S3",
+            "SQS"
+        ],
+        "image": "/projects/step-runner.webp",
+        "links": {
+            "github": null,
+            "demo": null
+        },
+        "private": true
+    },
+    {
+        "slug": "fondo-manager",
+        "title": "Fondo Manager",
+        "summary": "App React para gestionar fondos de inversión, explorar archivos asociados y visualizar su contenido.",
+        "impact": "Flujo claro de selección de fondo, descarga de .txt y lectura con scroll infinito; manejo robusto de estados y errores.",
+        "stack": [
+            "React",
+            "TypeScript",
+            "CSS Modules",
+            "REST APIs",
+            "Nginx",
+            "Docker"
+        ],
+        "image": "/projects/fondo-manager.webp",
+        "links": {
+            "github": "https://github.com/CharlyGon/manager-fondo",
+            "demo": null
+        },
+        "private": false
+    },
+    {
+        "slug": "twitter-api-app",
+        "title": "Twitter API App",
+        "summary": "Cliente para Twitter API con paginación, rate-limit y caché básica.",
+        "impact": "Resiliencia ante límites/errores y UX fluida con estados vacíos.",
+        "stack": [
+            "TypeScript",
+            "Node.js",
+            "Axios",
+            "Vite/Astro"
+        ],
+        "image": "/projects/twitter-api.webp",
+        "links": {
+            "github": "https://github.com/CharlyGon/twitter-api-app",
+            "demo": null
+        },
+        "private": false
+    },
+    {
+        "slug": "bluedochub-backend",
+        "title": "BlueDocHub (Backend)",
+        "summary": "Gestión y versionado de documentos con compartición y edición colaborativa.",
+        "impact": "Historial de versiones, colaboración en tiempo real e integridad de la información para equipos.",
+        "stack": [
+            "TypeScript",
+            "Node.js",
+            "MongoDB/DocumentDB",
+            "Docker"
+        ],
+        "image": "/projects/blueDocHub.png",
+        "links": {
+            "github": null,
+            "demo": null
+        },
+        "private": true
+    },
+    {
+        "slug": "pellegrini-dashboard",
+        "title": "Next.js Pellegrini Dashboard",
+        "summary": "Dashboard corporativo desarrollado en Next.js para la gestión de operaciones financieras.",
+        "impact": "Unificó la visualización de datos de múltiples microservicios, mejorando la trazabilidad y la experiencia de usuario para el área de negocio.",
+        "stack": [
+            "Next.js",
+            "TypeScript",
+            "TailwindCSS",
+            "REST APIs"
+        ],
+        "image": "/projects/pellegrini-dashboard.webp",
+        "links": {
+            "github": null,
+            "demo": null
+        },
+        "private": true
+    },
+    {
+        "slug": "pellegrini-pagos",
+        "title": "NestJS Pellegrini Pagos",
+        "summary": "Microservicio especializado en la gestión de pagos dentro del ecosistema Pellegrini.",
+        "impact": "Implementación de procesos seguros y escalables de pagos, con integración a gateways y auditoría de transacciones.",
+        "stack": [
+            "NestJS",
+            "TypeScript",
+            "SQL Server",
+            "NATS",
+            "Docker"
+        ],
+        "image": "/projects/pellegrini-pagos.png",
+        "links": {
+            "github": null,
+            "demo": null
+        },
+        "private": true
+    }
+]

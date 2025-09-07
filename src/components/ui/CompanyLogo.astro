@@ -1,0 +1,51 @@
+---
+interface Props {
+    src?: string;
+    name: string;
+    size?: number;
+    padding?: number;
+    ring?: boolean;
+    preserveColors?: boolean;
+}
+
+const {
+    src,
+    name,
+    size = 64,
+    padding = 8,
+    ring = true,
+    preserveColors = true,
+} = Astro.props;
+
+const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+---
+
+<div
+    class={`flex items-center justify-center rounded-full shadow-sm overflow-hidden
+          bg-white/8 ${ring ? "border border-white/15" : ""}`}
+    title={name}
+    style={`width:${size}px;height:${size}px;padding:${padding}px;`}
+>
+    {
+        src ? (
+            <img
+                src={src}
+                alt={name}
+                loading="lazy"
+                decoding="async"
+                class={`w-full h-full object-contain
+              ${preserveColors ? "" : "dark:invert dark:brightness-125"}`}
+                style="display:block;"
+            />
+        ) : (
+            <span class="text-xs font-semibold opacity-80 select-none">
+                {initials}
+            </span>
+        )
+    }
+</div>
