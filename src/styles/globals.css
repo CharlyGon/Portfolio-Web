@@ -170,3 +170,33 @@
     display: inline-block;
     animation: subtleMove 1.5s ease-in-out infinite;
 }
+
+/* ===== Spotlight ===== */
+.card-spot {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-spot::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(var(--spot-r, 140px) circle at var(--mx, 50%) var(--my, 50%),
+            rgba(255, 255, 255, var(--spot-a, .08)), transparent 60%);
+    opacity: 0;
+    transition: opacity 160ms ease;
+}
+
+.card-spot:hover::before,
+.card-spot:focus-within::before {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-spot::before {
+        transition: none;
+        opacity: 0 !important;
+    }
+}

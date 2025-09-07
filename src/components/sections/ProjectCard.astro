@@ -20,7 +20,8 @@ const {
 ---
 
 <article
-    class="rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:bg-white/7 transition"
+    class="card-spot rounded-2xl border border-white/10 bg-white/5
+         transition-colors duration-200 hover:bg-white/7 hover:border-white/15"
 >
     {
         image && (
@@ -88,3 +89,13 @@ const {
         </div>
     </div>
 </article>
+
+<script is:inline>
+    document.querySelectorAll(".card-spot").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+            card.style.setProperty("--my", `${e.clientY - r.top}px`);
+        });
+    });
+</script>

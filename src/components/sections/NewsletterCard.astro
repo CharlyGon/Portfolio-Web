@@ -10,7 +10,7 @@ const { title, summary, date, url, image } = Astro.props as Props;
 ---
 
 <article
-    class="rounded-2xl border border-white/10 bg-white/5 hover:bg-white/7 transition flex flex-col overflow-hidden"
+    class="card-spot rounded-2xl border border-white/10 bg-white/5 hover:bg-white/7 transition flex flex-col overflow-hidden"
 >
     {
         image && (
@@ -39,3 +39,13 @@ const { title, summary, date, url, image } = Astro.props as Props;
         </div>
     </div>
 </article>
+
+<script is:inline>
+    document.querySelectorAll(".card-spot").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+            card.style.setProperty("--my", `${e.clientY - r.top}px`);
+        });
+    });
+</script>
