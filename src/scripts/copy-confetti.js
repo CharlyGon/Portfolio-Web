@@ -1,4 +1,3 @@
-// src/scripts/copy-confetti.js
 function ensureLive() {
   let el = document.getElementById("copy-live");
   if (!el) {
