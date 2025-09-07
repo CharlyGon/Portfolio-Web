@@ -307,3 +307,37 @@
         transform: none;
     }
 }
+
+.flip-card {
+  perspective: 1200px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+  min-height: 220px;
+}
+
+.flip-card.is-flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-face.back {
+  transform: rotateY(180deg);
+}
+
+/* KPI */
+.stat-card .label { letter-spacing: .04em; }
+.stat-card .name  { font-weight: 600; }
+.stat-card .big   { line-height: 1; }

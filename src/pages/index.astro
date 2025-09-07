@@ -20,12 +20,12 @@ import "../styles/globals.css";
 >
 	<Hero />
 
-	<section id="experience">
+	<section id="experience" class="w-full mx-auto max-w-[740px] pb-24 px-4">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<BriefcaseIcon class="size-7" />
 			<span class="animate-title">Experiencia laboral</span>
 		</h2>
-		<div class="w-full mx-auto max-w-[740px] pb-24 px-4">
+		<div>
 			<Experience />
 		</div>
 	</section>
@@ -38,30 +38,26 @@ import "../styles/globals.css";
 		<Projects />
 	</section>
 
-	<section id="aboutMe">
+	<section id="aboutMe" class="w-full mx-auto max-w-[740px] pb-24 px-4">
 		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
 			<UserIcon class="size-7" />
 			<span class="animate-title">Sobre mí</span>
 		</h2>
-		<div class="w-full mx-auto max-w-[740px] pb-24 px-4">
-			<AboutMe />
-		</div>
+		<AboutMe />
+	</section>
 
-		<section id="contact">
-			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-				<AddressIcon class="size-7" />
-				<span class="animate-title">Contacto</span>
-			</h2>
-			<div class="w-full mx-auto max-w-[740px] pb-24 px-4">
-				<FormContact />
-			</div>
-		</section>
+	<section id="contact" class="w-full mx-auto max-w-[740px] pb-24 px-4">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			<AddressIcon class="size-7" />
+			<span class="animate-title">Contacto</span>
+		</h2>
+		<FormContact />
+	</section>
 
-		<section id="newsletter">
-			<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
-				📬 <span class="animate-title">Newsletter</span>
-			</h2>
-			<Newsletter />
-		</section>
+	<section id="newsletter">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			📬 <span class="animate-title">Newsletter</span>
+		</h2>
+		<Newsletter />
 	</section>
 </Layout>

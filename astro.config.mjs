@@ -1,10 +1,17 @@
 import { defineConfig } from 'astro/config';
-
 import tailwind from "@astrojs/tailwind";
+import path from "node:path";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     tailwind(),
   ],
+  vite: {
+    resolve: {
+      alias: {
+        "@": path.resolve(new URL("./src", import.meta.url).pathname),
+      },
+    },
+  },
 });

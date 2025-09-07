@@ -1,0 +1,21 @@
+{
+    "profileUrl": "https://www.aoe2insights.com/user/12455864/",
+    "bestCiv": {
+        "name": "Bengalis",
+        "winRate": 56.7,
+        "matches": 60,
+        "wins": 34
+    },
+    "bestMap": {
+        "name": "Arabia",
+        "winRate": 54.6,
+        "matches": 520,
+        "wins": 284
+    },
+    "bestPos": {
+        "name": "Flank",
+        "winRate": 45.9,
+        "matches": 296,
+        "wins": 136
+    }
+}

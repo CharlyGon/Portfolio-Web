@@ -1,9 +1,13 @@
+---
+import aoe from "../../data/aoe-insights.json";
+---
+
 <section
     class="card-spot rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8"
     style="--spot-r: 140px; --spot-a: .08"
 >
     <header class="mb-4">
-        <h3 class="text-2xl font-bold">Sobre mí</h3>
+        <h3 class="text-2xl font-bold">Mi enfoque</h3>
         <p class="text-neutral-300 mt-1">
             Backend Developer • Node.js & TypeScript
         </p>
@@ -21,16 +25,14 @@
                 mueven la mejora continua, la claridad en el código y entregar
                 valor de negocio de forma constante.
             </p>
-
             <p class="opacity-90">
                 Disfruto construir soluciones <em>escalables y medibles</em>,
                 documentar lo necesario y trabajar codo a codo con el equipo
                 para que cada entrega sea un paso firme. Actualmente sigo
                 profundizando en <strong>arquitectura de microservicios</strong
-                >,
-                <strong>Serverless</strong> y <strong>observabilidad</strong>.
+                >, <strong>Serverless</strong> y
+                <strong>observabilidad</strong>.
             </p>
-
             <div class="flex flex-wrap gap-2 pt-1">
                 <span
                     class="rounded-full px-3 py-1 text-xs bg-white/10 border border-white/10"
@@ -121,44 +123,264 @@
             target="_blank"
             rel="noopener"
             class="rounded-xl px-4 py-2 ring-1 ring-white/15 hover:bg-white/5 transition"
+            >Descargar CV</a
         >
-            Descargar CV
-        </a>
         <a
             href="#contact"
             class="rounded-xl px-4 py-2 bg-white/10 hover:bg-white/15 transition"
+            >¿Charlamos? 🚀</a
         >
-            ¿Charlamos? 🚀
-        </a>
     </footer>
 </section>
+
 <section
     class="card-spot rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 mt-8"
+    style="--spot-r: 140px; --spot-a: .08"
 >
-    <h4 class="font-semibold mb-3">Fuera del código</h4>
-    <div class="border-l border-white/20 pl-6 space-y-6">
-        <div>
-            <span class="text-sm text-gray-400">🎮 Hobby</span>
-            <p class="opacity-90 text-sm">
-                Gran amante de <strong>Age of Empires II</strong>. Me inspira la
-                estrategia, la planificación y la construcción progresiva de
-                imperios — muy similar a cómo afronto el desarrollo de software.
-            </p>
-        </div>
-        <div>
-            <span class="text-sm text-gray-400">📚 Interés</span>
-            <p class="opacity-90 text-sm">
-                Apasionado por las buenas prácticas en programación. He leído
-                libros de
-                <strong>Robert C. Martin</strong> como <em>Clean Code</em> y
-                <em>Clean Architecture</em>, aplicando sus principios en mis
-                proyectos.
-            </p>
-        </div>
+    <h4 class="text-xl md:text-2xl font-semibold mb-4">Fuera del código</h4>
+
+    <div class="space-y-4">
+        <!-- HOBBY / AOE II — Flip card -->
+        <article
+            class="flip-card rounded-xl border border-white/10 bg-black/30"
+        >
+            <div class="flip-inner">
+                <!-- FRONT -->
+                <div class="flip-face front p-4">
+                    <div class="flex items-start gap-3">
+                        <span
+                            class="inline-flex w-9 h-9 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10"
+                            >🎮</span
+                        >
+                        <div class="min-w-0">
+                            <div class="mb-5 ">
+                                <span
+                                    class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-white/10 ring-1 ring-white/10 tracking-wide"
+                                    >HOBBY</span
+                                >
+                            </div>
+                            <h5 class="font-semibold leading-tight">
+                                Estrategia en tiempo real (AoE II)
+                            </h5>
+                            <p class="opacity-90 text-sm mt-1">
+                                Fan de <strong>Age of Empires II</strong>. Me
+                                entrena el pensamiento estratégico:
+                                <em>macro</em>, <em>timing</em> y <em
+                                    >adaptabilidad</em
+                                >… lo llevo tal cual a producto y código.
+                            </p>
+                            <ul class="mt-2 flex flex-wrap gap-2 text-[11px]">
+                                <li
+                                    class="rounded-full px-2 py-1 bg-white/10 border border-white/10"
+                                >
+                                    Planificación
+                                </li>
+                                <li
+                                    class="rounded-full px-2 py-1 bg-white/10 border border-white/10"
+                                >
+                                    Prioridades
+                                </li>
+                                <li
+                                    class="rounded-full px-2 py-1 bg-white/10 border border-white/10"
+                                >
+                                    Ejecución
+                                </li>
+                            </ul>
+
+                            <button
+                                type="button"
+                                class="mt-3 rounded-full px-3 py-1.5 text-sm bg-white/10 hover:bg-white/15 ring-1 ring-white/10 transition flip-btn"
+                            >
+                                Ver estadísticas ↗
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BACK (datos desde JSON) -->
+                <div class="flip-face back p-4">
+                    <header class="flex items-center justify-between">
+                        <div>
+                            <h6 class="font-semibold">
+                                AoE II — Highlights personales
+                            </h6>
+                            <p class="text-xs opacity-70">Datos ilustrativos</p>
+                        </div>
+                        <button
+                            type="button"
+                            class="rounded-full px-3 py-1.5 text-sm bg-white/10 hover:bg-white/15 ring-1 ring-white/10 transition flip-btn"
+                        >
+                            Volver
+                        </button>
+                    </header>
+
+                    <div class="grid gap-3 mt-3 md:grid-cols-3">
+                        <!-- Mejor civilización -->
+                        <div
+                            class="stat-card rounded-lg bg-white/5 ring-1 ring-white/10 p-3"
+                        >
+                            <span
+                                class="label opacity-70 block text-[11px] uppercase tracking-wide"
+                                >Mejor civilización</span
+                            >
+                            <div
+                                class="flex items-baseline justify-between mt-0.5"
+                            >
+                                <strong class="name text-sm"
+                                    >{aoe.bestCiv.name}</strong
+                                >
+                                <span class="big text-xl font-bold">
+                                    {aoe.bestCiv.winRate}<span
+                                        class="text-sm font-semibold opacity-80"
+                                        >%</span
+                                    >
+                                </span>
+                            </div>
+                            <p class="sub text-xs opacity-75 mt-1">
+                                {aoe.bestCiv.matches} partidas, {
+                                    aoe.bestCiv.wins
+                                } victorias
+                            </p>
+                        </div>
+
+                        <!-- Mejor mapa -->
+                        <div
+                            class="stat-card rounded-lg bg-white/5 ring-1 ring-white/10 p-3"
+                        >
+                            <span
+                                class="label opacity-70 block text-[11px] uppercase tracking-wide"
+                                >Mejor mapa</span
+                            >
+                            <div
+                                class="flex items-baseline justify-between mt-0.5"
+                            >
+                                <strong class="name text-sm"
+                                    >{aoe.bestMap.name}</strong
+                                >
+                                <span class="big text-xl font-bold">
+                                    {aoe.bestMap.winRate}<span
+                                        class="text-sm font-semibold opacity-80"
+                                        >%</span
+                                    >
+                                </span>
+                            </div>
+                            <p class="sub text-xs opacity-75 mt-1">
+                                {aoe.bestMap.matches} partidas, {
+                                    aoe.bestMap.wins
+                                } victorias
+                            </p>
+                        </div>
+
+                        <!-- Mejor posición -->
+                        <div
+                            class="stat-card rounded-lg bg-white/5 ring-1 ring-white/10 p-3"
+                        >
+                            <span
+                                class="label opacity-70 block text-[11px] uppercase tracking-wide"
+                                >Mejor posición</span
+                            >
+                            <div
+                                class="flex items-baseline justify-between mt-0.5"
+                            >
+                                <strong class="name text-sm"
+                                    >{aoe.bestPos.name}</strong
+                                >
+                                <span class="big text-xl font-bold">
+                                    {aoe.bestPos.winRate}<span
+                                        class="text-sm font-semibold opacity-80"
+                                        >%</span
+                                    >
+                                </span>
+                            </div>
+                            <p class="sub text-xs opacity-75 mt-1">
+                                {aoe.bestPos.matches} partidas, {
+                                    aoe.bestPos.wins
+                                } victorias
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="mt-3 text-sm opacity-90">
+                        Ver detalle completo:
+                        <a
+                            href={aoe.profileUrl}
+                            target="_blank"
+                            rel="noopener"
+                            class="underline">AOE2Insights ↗</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <!-- LIBROS / INTERÉS -->
+        <article
+            class="rounded-xl border border-white/10 bg-black/30 p-4 hover:bg-black/25 transition"
+        >
+            <div class="flex items-start gap-3">
+                <span
+                    class="inline-flex size-9 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10"
+                    >📚</span
+                >
+                <div class="min-w-0">
+                    <h5 class="font-semibold leading-tight">Interés</h5>
+                    <p class="opacity-90 text-sm mt-1">
+                        Buenas prácticas y arquitectura. Lecturas de <strong
+                            >Robert C. Martin</strong
+                        >:
+                        <em>Clean Code</em>, <em>Clean Architecture</em>.
+                        Principios que aplico en mis proyectos.
+                    </p>
+                </div>
+            </div>
+        </article>
     </div>
 </section>
 
-<script type="module" is:inline>
-    import initCardSpotlight from "@/scripts/spotlight.js";
-    initCardSpotlight();
+<script is:inline>
+    // Spotlight
+    document.addEventListener("astro:page-load", () => {
+        document.querySelectorAll(".card-spot").forEach((card) => {
+            card.addEventListener("mousemove", (e) => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                card.style.setProperty("--my", `${e.clientY - r.top}px`);
+            });
+        });
+    });
+</script>
+
+<script is:inline>
+    (function initFlip(selector = ".flip-card") {
+        const cards = document.querySelectorAll(selector);
+        cards.forEach((card) => {
+            if (card.dataset.flipBound === "1") return;
+            card.dataset.flipBound = "1";
+            card.querySelectorAll(".flip-btn").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    card.classList.toggle("is-flipped");
+                });
+            });
+        });
+        console.debug("[flip] bound", cards.length);
+    })();
+
+    document.addEventListener("astro:page-load", () => {
+        console.debug("[flip] astro:page-load");
+        (function initFlip(selector = ".flip-card") {
+            const cards = document.querySelectorAll(selector);
+            cards.forEach((card) => {
+                if (card.dataset.flipBound === "1") return;
+                card.dataset.flipBound = "1";
+                card.querySelectorAll(".flip-btn").forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        card.classList.toggle("is-flipped");
+                    });
+                });
+            });
+            console.debug("[flip] rebound", cards.length);
+        })();
+    });
 </script>
