@@ -309,35 +309,76 @@
 }
 
 .flip-card {
-  perspective: 1200px;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  position: relative;
+    perspective: 1200px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
 }
 
 .flip-inner {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform .6s cubic-bezier(.2, .7, .2, 1);
-  min-height: 220px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+    min-height: 220px;
 }
 
 .flip-card.is-flipped .flip-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .flip-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .flip-face.back {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 /* KPI */
-.stat-card .label { letter-spacing: .04em; }
-.stat-card .name  { font-weight: 600; }
-.stat-card .big   { line-height: 1; }
+.stat-card .label {
+    letter-spacing: .04em;
+}
+
+.stat-card .name {
+    font-weight: 600;
+}
+
+.stat-card .big {
+    line-height: 1;
+}
+
+/* Carousel de libros */
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Dots */
+.books-dots button {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, .28);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.books-dots button[aria-current="true"] {
+    background: rgba(255, 255, 255, .9);
+    transform: scale(1.2);
+}
+
+/* Carousel de libros */
+.books-carousel {
+    scroll-padding-left: 0.5rem;
+}
+
+.book-item {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
