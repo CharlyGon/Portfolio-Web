@@ -1,0 +1,9 @@
+---
+import FreelancerCard from "./FreelancerCard.astro";
+import data from "@/data/freelance.json";
+const items = data;
+---
+
+<section class="space-y-6">
+    {items.map((item) => <FreelancerCard {...item} />)}
+</section>

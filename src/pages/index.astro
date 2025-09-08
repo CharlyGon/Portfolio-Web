@@ -10,6 +10,7 @@ import AddressIcon from "../components/icons/Address.astro";
 import Experience from "@/components/sections/Experience.astro";
 import AboutMe from "@/components/sections/AboutMe.astro";
 import Newsletter from "@/components/sections/Newsletter.astro";
+import Freelancer from "@/components/sections/Freelancer.astro";
 
 import "../styles/globals.css";
 ---
@@ -28,6 +29,14 @@ import "../styles/globals.css";
 		<div>
 			<Experience />
 		</div>
+	</section>
+
+	<section id="freelancer" class="w-full mx-auto max-w-[740px] pb-24 px-4">
+		<h2 class="text-3xl font-bold mb-6 pb-4 flex gap-x-3 items-center">
+			<BriefcaseIcon class="size-7" />
+			<span class="animate-title">Freelancer</span>
+		</h2>
+		<Freelancer />
 	</section>
 
 	<section id="projects" class="container mx-auto pb-24 px-4 md:px-6 lg:px-8">

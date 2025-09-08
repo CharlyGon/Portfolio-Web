@@ -1,0 +1,144 @@
+---
+interface Props {
+    company: string;
+    slug?: string;
+    logo?: string;
+    role: string;
+    period?: string;
+    summary: string;
+    impact?: string[];
+    stack?: string[];
+    url?: string;
+    image?: string;
+}
+
+const {
+    company,
+    logo,
+    role,
+    period,
+    summary,
+    impact = [],
+    stack = [],
+    url,
+    image,
+    slug,
+} = Astro.props as Props;
+
+const modalId =
+  "img-modal-" +
+  (slug || company.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""));
+---
+
+<article
+    class="card-spot rounded-2xl border border-white/10 bg-white/5 overflow-hidden
+           transition-colors duration-200 hover:bg-white/7 hover:border-white/15"
+>
+    {image && (
+  <button
+    type="button"
+    class="block w-full group focus:outline-none"
+    onclick={`document.querySelector('#${modalId}')?.showModal()`}
+    aria-label={`Ampliar imagen del proyecto ${company}`}
+  >
+    <img
+      src={image}
+      alt={`Vista del proyecto ${company}`}
+      class="w-full max-h-52 object-cover border-b border-white/10
+             group-hover:scale-[1.02] transition-transform duration-300"
+      loading="lazy"
+    />
+  </button>
+)}
+
+
+    <div class="p-6">
+        <header class="flex items-start gap-3">
+            {logo ? (
+                <img
+                    src={logo}
+                    alt={`Logo ${company}`}
+                    class="w-10 h-10 rounded-lg ring-1 ring-white/10 object-contain"
+                    loading="lazy"
+                />
+            ) : (
+                <div class="w-10 h-10 grid place-items-center rounded-lg ring-1 ring-white/10 bg-white/5">
+                    🧰
+                </div>
+            )}
+
+            <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    {url ? (
+                        <a
+                            href={url}
+                            target="_blank"
+                            rel="noopener"
+                            class="font-semibold hover:underline"
+                        >
+                            {company}
+                        </a>
+                    ) : (
+                        <span class="font-semibold">{company}</span>
+                    )}
+                    {period && <span class="text-xs opacity-70">• {period}</span>}
+                </div>
+                <p class="text-sm opacity-85">{role}</p>
+            </div>
+        </header>
+
+        <p class="opacity-90 text-sm mt-3">{summary}</p>
+
+        {impact.length > 0 && (
+            <ul class="mt-3 space-y-1 text-sm opacity-90 list-disc list-inside">
+                {impact.map((i) => <li>{i}</li>)}
+            </ul>
+        )}
+
+        {stack.length > 0 && (
+            <div class="mt-3 flex flex-wrap gap-2">
+                {stack.map((t) => (
+                    <span
+                        class="text-[11px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10"
+                    >
+                        {t}
+                    </span>
+                ))}
+            </div>
+        )}
+    </div>
+</article>
+
+
+{image && (
+  <dialog
+    id={modalId}
+    class="rounded-xl p-0 w-[92vw] max-w-5xl bg-neutral-900/95 border border-white/10"
+  >
+    <!-- Header modal -->
+    <div class="flex items-center justify-between px-4 py-2 border-b border-white/10">
+      <span class="text-sm opacity-80 truncate pr-2">{company}</span>
+      <form method="dialog">
+        <button
+          class="px-2 py-1 text-sm rounded-md bg-white/10 hover:bg-white/15 border border-white/10"
+          aria-label="Cerrar"
+        >
+          ✕
+        </button>
+      </form>
+    </div>
+
+    <!-- Imagen grande -->
+    <div class="p-3">
+      <img
+        src={image}
+        alt={`Vista ampliada del proyecto ${company}`}
+        class="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+      />
+    </div>
+  </dialog>
+)}
+
+  <script type="module">
+    import '../scripts/dialog.ts';
+  </script>

@@ -1,0 +1,73 @@
+[
+    {
+        "company": "Bank S.A",
+        "slug": "BankSA",
+        "logo": "/companies/BankSA.png",
+        "role": "Frontend Developer (Freelance)",
+        "period": "2024",
+        "summary": "Desarrollo de frontend para un gestor de autenticación y firma digital, permitiendo a los usuarios generar certificados de identidad digital y utilizarlos en múltiples procesos de firma.",
+        "impact": [
+            "Implementación de un flujo seguro de autenticación con validación de identidad (DNI, biometría y doble factor).",
+            "Desarrollo de interfaces intuitivas para la emisión y uso de certificados digitales.",
+            "Optimización de la experiencia de usuario en el proceso de firma electrónica de documentos.",
+            "Integración con pasarelas de pago y validaciones externas para mayor seguridad.",
+            "Entregas continuas en un entorno ágil (Scrum)."
+        ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "React",
+            "Scrum"
+        ],
+        "url": "https://www.linkedin.com/company/bank-argentina/posts/?feedView=all",
+        "image": "/freelancer/banksa.png"
+    },
+    {
+        "company": "Unio Energy",
+        "slug": "UnioSA",
+        "logo": "/companies/unio.png",
+        "role": "Frontend Developer (Freelance)",
+        "period": "2025",
+      "summary": "Desarrollo de frontend para una plataforma de gestión del conocimiento en el sector energético, permitiendo a los usuarios realizar consultas, registrar experiencias y aprovechar una IA especializada en petróleo y energía.",
+    "impact": [
+        "Implementación de módulos para la carga de consultas y experiencias, integrados con validaciones dinámicas.",
+        "Diseño de interfaces que permiten la interacción con una IA entrenada para el sector petrolero.",
+        "Optimización del flujo de gestión documental y visualización de archivos compartidos.",
+        "Sistema automatizado de notificaciones.",
+        "Entregas continuas en un entorno ágil (Scrum)."
+    ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "Next.js",
+            "Scrum"
+        ],
+        "url": "https://unioenergy.com/",
+        "image": "/freelancer/uniosa.png"
+    },
+    {
+        "company": "The Room Software",
+        "slug": "TheRoomSoftware",
+        "logo": "/companies/theroomsoftware.png",
+        "role": "Fullstack Developer (Freelance)",
+        "period": "2025",
+        "summary": "Desarrollo fullstack de una plataforma para la gestión de fondos de inversión y operaciones financieras, construida bajo una arquitectura de microservicios con NestJS y un frontend en Next.js. Enfocado en la integración con sistemas externos (SOAP/REST), optimización de procesos internos y diseño de interfaces orientadas a la usabilidad.",
+        "impact": [
+            "Diseño e implementación de microservicios en NestJS para suscripción, rescates, parámetros y gestión de fondos.",
+            "Integración de servicios SOAP heredados con APIs modernas REST mediante un gateway en NestJS.",
+            "Modelado de datos en SQL Server con Prisma ORM, garantizando consistencia e integridad.",
+            "Desarrollo de frontend en React/Next.js con dashboards de consultas y experiencias en tiempo real.",
+            "Implementación de NATS para la comunicación entre microservicios en arquitectura event-driven.",
+            "Mejora de procesos mediante despliegues en contenedores Docker."
+        ],
+        "stack": [
+            "Node.js",
+            "TypeScript",
+            "Next.js",
+            "Nest.js",
+            "Scrum"
+        ],
+        "url": "https://theroomsoftware.tech/",
+        "image": "/freelancer/theroomsoftware.png"
+    }
+]
