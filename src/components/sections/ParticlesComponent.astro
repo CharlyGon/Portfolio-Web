@@ -1,65 +1,98 @@
-<div
-    id="particles-js"
-    class="pointer-events-none fixed inset-0 -z-5 w-full h-full"
->
-</div>
+<!-- CAPA 1: fondo de partículas -->
+<div id="particles-bg" class="pointer-events-none fixed inset-0 z-0 w-full h-full"></div>
+
+<!-- CAPA 2: OVNI 1 -->
+<div id="particles-ufo1" class="pointer-events-none fixed inset-0 z-0 w-full h-full"></div>
+
+<!-- CAPA 3: OVNI 2 -->
+<div id="particles-ufo2" class="pointer-events-none fixed inset-0 z-0 w-full h-full"></div>
 
 <style is:global>
-    /* Por si el canvas no se ajusta bien en algunos navegadores */
-    #particles-js > canvas {
-        width: 100% !important;
-        height: 100% !important;
-        display: block;
-    }
+  #particles-bg > canvas,
+  #particles-ufo1 > canvas,
+  #particles-ufo2 > canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
 </style>
 
 <script is:inline>
-    if (typeof window !== "undefined") {
-        const ensureParticles = () =>
-            new Promise((resolve) => {
-                if (window.particlesJS) return resolve(true);
-                const s = document.createElement("script");
-                s.src =
-                    "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-                s.async = true;
-                s.onload = () => resolve(true);
-                document.body.appendChild(s);
-            });
+  if (typeof window !== "undefined") {
+    const UFO_URL_1 = "/assets/ufo3.png";
+    const UFO_URL_2 = "/assets/ufo5.png";
 
-        ensureParticles().then(() => {
-            // @ts-ignore
-            window.particlesJS("particles-js", {
-                particles: {
-                    number: {
-                        value: 50,
-                        density: { enable: true, value_area: 800 },
-                    },
-                    color: { value: "#ffffff" },
-                    shape: {
-                        type: "circle",
-                        stroke: { width: 0, color: "#000000" },
-                    },
-                    opacity: {
-                        value: 0.5,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 1,
-                            opacity_min: 0,
-                            sync: false,
-                        },
-                    },
-                    size: { value: 1 },
-                    move: {
-                        enable: true,
-                        speed: 2,
-                        out_mode: "out",
-                        bounce: false,
-                    },
-                },
-                interactivity: { detect_on: "canvas" },
-                retina_detect: true,
-            });
-        });
-    }
+    const ensureParticles = () =>
+      new Promise((resolve) => {
+        if (window.particlesJS) return resolve(true);
+        const s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+        s.async = true;
+        s.onload = () => resolve(true);
+        document.body.appendChild(s);
+      });
+
+    const preload = (src) =>
+      new Promise((res) => {
+        const img = new Image();
+        img.onload = () => res(true);
+        img.onerror = () => { console.error("[ufo] no se encontró:", src); res(false); };
+        img.src = src;
+      });
+
+    (async () => {
+      const okLib = await ensureParticles();
+      const ok1 = await preload(UFO_URL_1);
+      const ok2 = await preload(UFO_URL_2);
+      if (!okLib || !ok1 || !ok2) return;
+
+      // CAPA 1: fondo
+      window.particlesJS("particles-bg", {
+        particles: {
+          number: { value: 60, density: { enable: true, value_area: 900 } },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: {
+            value: 0.45,
+            random: true,
+            anim: { enable: true, speed: 0.6, opacity_min: 0.15, sync: false },
+          },
+          size: { value: 2, random: true },
+          move: { enable: true, speed: 0.6, random: true, out_mode: "out" },
+        },
+        interactivity: { detect_on: "canvas" },
+        retina_detect: true,
+      });
+
+      // CAPA 2: ovni 1
+      window.particlesJS("particles-ufo1", {
+        particles: {
+          number: { value: 1, density: { enable: false } },
+          shape: {
+            type: "image",
+            image: { src: UFO_URL_1, width: 64, height: 64 },
+          },
+          size: { value: 16, random: false },
+          opacity: { value: 0.9 },
+          move: { enable: true, speed: 0.3, random: true, out_mode: "out" },
+        },
+        retina_detect: true,
+      });
+
+      // CAPA 3: ovni 2
+      window.particlesJS("particles-ufo2", {
+        particles: {
+          number: { value: 1, density: { enable: false } },
+          shape: {
+            type: "image",
+            image: { src: UFO_URL_2, width: 64, height: 64 },
+          },
+          size: { value: 18, random: false },
+          opacity: { value: 0.9 },
+          move: { enable: true, speed: 0.25, random: true, out_mode: "out" },
+        },
+        retina_detect: true,
+      });
+    })();
+  }
 </script>

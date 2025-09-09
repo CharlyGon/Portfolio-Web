@@ -1,0 +1,65 @@
+<div
+    id="particles-js"
+    class="pointer-events-none fixed inset-0 -z-5 w-full h-full"
+>
+</div>
+
+<style is:global>
+    /* Por si el canvas no se ajusta bien en algunos navegadores */
+    #particles-js > canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+    }
+</style>
+
+<script is:inline>
+    if (typeof window !== "undefined") {
+        const ensureParticles = () =>
+            new Promise((resolve) => {
+                if (window.particlesJS) return resolve(true);
+                const s = document.createElement("script");
+                s.src =
+                    "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+                s.async = true;
+                s.onload = () => resolve(true);
+                document.body.appendChild(s);
+            });
+
+        ensureParticles().then(() => {
+            // @ts-ignore
+            window.particlesJS("particles-js", {
+                particles: {
+                    number: {
+                        value: 50,
+                        density: { enable: true, value_area: 800 },
+                    },
+                    color: { value: "#ffffff" },
+                    shape: {
+                        type: "circle",
+                        stroke: { width: 0, color: "#000000" },
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0,
+                            sync: false,
+                        },
+                    },
+                    size: { value: 1 },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        out_mode: "out",
+                        bounce: false,
+                    },
+                },
+                interactivity: { detect_on: "canvas" },
+                retina_detect: true,
+            });
+        });
+    }
+</script>
