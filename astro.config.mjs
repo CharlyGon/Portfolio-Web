@@ -4,8 +4,8 @@ import netlify from '@astrojs/netlify/functions';
 import path from 'node:path';
 
 export default defineConfig({
-  output: 'hybrid',            // ← habilita /api/* como Netlify Functions
-  adapter: netlify(),          // ← usa Functions (no Edge)
+  output: 'hybrid',
+  adapter: netlify(),
   integrations: [tailwind()],
   vite: {
     resolve: {

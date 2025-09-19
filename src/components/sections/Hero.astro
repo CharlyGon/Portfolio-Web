@@ -163,16 +163,11 @@ import Docker from "../icons/Docker.astro";
 </script>
 
 <script is:inline>
-    const el = document.getElementById("visit-count");
-    const setCount = (n) => {
-        if (el)
-            el.textContent = Number(n || 0)
-                .toString()
-                .padStart(5, "0");
-    };
+  const el = document.getElementById("visit-count");
+  const setCount = (n) => el && (el.textContent = Number(n || 0).toString().padStart(5, "0"));
 
-    fetch("/api/visits", { method: "POST" })
-        .then((r) => r.json())
-        .then((d) => setCount(d.count))
-        .catch(() => setCount(1));
+  fetch("/api/visits", { method: "POST" })
+    .then(r => r.json())
+    .then(d => setCount(d.count))
+    .catch(() => setCount(1));
 </script>
