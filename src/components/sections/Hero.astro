@@ -144,10 +144,35 @@ import Docker from "../icons/Docker.astro";
                 >
             </SocialPill>
         </nav>
+
+        <div class="mt-6 col-span-full flex justify-center">
+            <div
+                id="visit-counter"
+                class="px-4 py-2 font-mono text-lg tracking-widest text-green-400 bg-black border-2 border-green-500 rounded-md shadow-[inset_0_0_10px_rgba(0,255,0,0.7)]"
+                style="font-family:'Press Start 2P',monospace;"
+            >
+                Visits: <span id="visit-count">00000</span>
+            </div>
+        </div>
     </div>
 </SectionContainer>
 
 <script type="module" is:inline>
     import initCopyConfetti from "/src/scripts/copy-confetti.js";
     initCopyConfetti(); // bindea todo lo que tenga data-confetti-copy / data-copy
+</script>
+
+<script is:inline>
+    const el = document.getElementById("visit-count");
+    const setCount = (n) => {
+        if (el)
+            el.textContent = Number(n || 0)
+                .toString()
+                .padStart(5, "0");
+    };
+
+    fetch("/api/visits", { method: "POST" })
+        .then((r) => r.json())
+        .then((d) => setCount(d.count))
+        .catch(() => setCount(1));
 </script>
