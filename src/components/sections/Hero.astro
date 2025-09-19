@@ -157,17 +157,26 @@ import Docker from "../icons/Docker.astro";
     </div>
 </SectionContainer>
 
-<script type="module" is:inline>
-    import initCopyConfetti from "/src/scripts/copy-confetti.js";
-    initCopyConfetti(); // bindea todo lo que tenga data-confetti-copy / data-copy
-</script>
+<script type="module" src="/scripts/copy-confetti.js"></script>
 
 <script is:inline>
   const el = document.getElementById("visit-count");
   const setCount = (n) => el && (el.textContent = Number(n || 0).toString().padStart(5, "0"));
 
-  fetch("/api/visits", { method: "POST" })
-    .then(r => r.json())
-    .then(d => setCount(d.count))
-    .catch(() => setCount(1));
+  (async () => {
+    try {
+      const res = await fetch("/api/visits", { method: "POST" });
+      if (!res.ok) throw new Error("POST failed");
+      const data = await res.json();
+      setCount(data.count);
+    } catch {
+      try {
+        const res2 = await fetch("/api/visits"); // fallback: leer sin sumar
+        const data2 = await res2.json();
+        setCount(data2.count);
+      } catch {
+        setCount(1);
+      }
+    }
+  })();
 </script>
