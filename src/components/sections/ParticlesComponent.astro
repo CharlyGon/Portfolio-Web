@@ -1,11 +1,23 @@
 <!-- CAPA 1: fondo de partículas -->
-<div id="particles-bg" class="pointer-events-none fixed inset-0 z-0 w-full h-full"></div>
+<div
+  id="particles-bg"
+  class="pointer-events-none fixed inset-0 z-0 w-full h-full"
+>
+</div>
 
 <!-- CAPA 2: OVNI 1 -->
-<div id="particles-ufo1" class="pointer-events-none fixed inset-0 z-0 w-full h-full"></div>
+<div
+  id="particles-ufo1"
+  class="pointer-events-none fixed inset-0 z-0 w-full h-full"
+>
+</div>
 
 <!-- CAPA 3: OVNI 2 -->
-<div id="particles-ufo2" class="pointer-events-none fixed inset-0 z-0 w-full h-full"></div>
+<div
+  id="particles-ufo2"
+  class="pointer-events-none fixed inset-0 z-0 w-full h-full"
+>
+</div>
 
 <style is:global>
   #particles-bg > canvas,
@@ -36,7 +48,10 @@
       new Promise((res) => {
         const img = new Image();
         img.onload = () => res(true);
-        img.onerror = () => { console.error("[ufo] no se encontró:", src); res(false); };
+        img.onerror = () => {
+          console.error("[ufo] no se encontró:", src);
+          res(false);
+        };
         img.src = src;
       });
 
@@ -96,3 +111,225 @@
     })();
   }
 </script>
+
+<script is:inline>
+  // Espera a que particles.js registre la instancia de un contenedor
+  function waitParticlesInstance(containerId, maxMs = 4000) {
+    const t0 = performance.now();
+    return new Promise((resolve, reject) => {
+      (function tick() {
+        const inst = (window.pJSDom || []).find(
+          (d) => d?.pJS?.canvas?.el?.parentElement?.id === containerId,
+        );
+        if (inst) return resolve(inst.pJS);
+        if (performance.now() - t0 > maxMs)
+          return reject(new Error("particles timeout: " + containerId));
+        requestAnimationFrame(tick);
+      })();
+    });
+  }
+
+  // Vincula un botón invisible ("hitbox") a la posición del único particle (el OVNI)
+  async function bindUfoHit(containerId, hitId, modalId = "ufo-modal") {
+    const pJS = await waitParticlesInstance(containerId).catch(() => null);
+    if (!pJS) return;
+
+    const btn = document.getElementById(hitId);
+    const modal = document.getElementById(modalId);
+    if (!btn || !modal) return;
+
+    // Abre el modal al click
+    btn.addEventListener("click", () => {
+      if (typeof modal.showModal === "function") modal.showModal();
+      else modal.setAttribute("open", "");
+    });
+
+    // Sigue al OVNI en cada frame
+    function follow() {
+      const arr = pJS?.particles?.array || [];
+      const p = arr[0]; // solo 1 partícula (nuestro OVNI)
+      const canvas = pJS?.canvas?.el;
+
+      if (p && canvas) {
+        const rect = canvas.getBoundingClientRect();
+        // Ajuste por pixel ratio / escalado del canvas:
+        const scaleX = rect.width / canvas.width;
+        const scaleY = rect.height / canvas.height;
+
+        const x = rect.left + p.x * scaleX;
+        const y = rect.top + p.y * scaleY;
+        const sizePx = p.radius * 2 * ((scaleX + scaleY) / 2);
+
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
+        btn.style.width = Math.max(40, sizePx) + "px";
+        btn.style.height = Math.max(40, sizePx) + "px";
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+      requestAnimationFrame(follow);
+    }
+    follow();
+  }
+
+  // Activá seguimiento OVNIs
+  bindUfoHit("particles-ufo1", "ufo1-hit"); // → abre #ufo-modal
+  bindUfoHit("particles-ufo2", "ufo2-hit"); // → abre #ufo-modal
+
+  //proximamente: modales independientes
+  //   bindUfoHit('particles-ufo1', 'ufo1-hit', 'modal-ufo1'); // OVNI 1 → Hablemos
+  // bindUfoHit('particles-ufo2', 'ufo2-hit', 'modal-ufo2');
+</script>
+
+<!-- HITBOXES por encima (clickeables) -->
+<button
+  id="ufo1-hit"
+  class="ufo-hit"
+  aria-label="Abrir modal OVNI 1"
+  title="OVNI 1"></button>
+<button
+  id="ufo2-hit"
+  class="ufo-hit"
+  aria-label="Abrir modal OVNI 2"
+  title="OVNI 2"></button>
+
+<!-- MODAL (activo) -->
+<dialog
+  id="ufo-modal"
+  class="backdrop:bg-black/60 rounded-xl p-0 border border-white/10"
+>
+  <div class="p-5 bg-neutral-900 text-neutral-200 max-w-md">
+    <header class="flex items-center justify-between gap-4 mb-3">
+      <h3 class="text-lg font-semibold">👽 ¡Te abdujeron!</h3>
+      <form method="dialog">
+        <button
+          class="px-3 py-1 rounded-md ring-1 ring-white/15 hover:bg-white/10"
+          >Cerrar</button
+        >
+      </form>
+    </header>
+    <p class="text-sm opacity-90">
+      Abducción exitosa. Ahora, ¿charlamos?
+    </p>
+  </div>
+</dialog>
+
+<style is:global>
+  .ufo-hit {
+    position: fixed;
+    z-index: 30;
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translate(-50%, -50%); /* centra el botón en el x,y del sprite */
+  }
+  .ufo-hit:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 0.5rem;
+  }
+</style>
+
+<!-- MODAL 1: Hablemos -->
+<dialog
+  id="modal-ufo1"
+  class="backdrop:bg-black/60 rounded-xl p-0 border border-white/10"
+>
+  <div class="p-5 bg-neutral-900 text-neutral-200 max-w-md">
+    <header class="flex items-center justify-between gap-4 mb-3">
+      <h3 class="text-lg font-semibold">🛸 ¿Hablamos de tu proyecto?</h3>
+      <form method="dialog">
+        <button
+          class="px-3 py-1 rounded-md ring-1 ring-white/15 hover:bg-white/10"
+          >Cerrar</button
+        >
+      </form>
+    </header>
+
+    <p class="text-sm opacity-90 mb-4">
+      Desarrollo backend escalable con Node.js & TypeScript. Contame tu idea y
+      te propongo un enfoque técnico.
+    </p>
+
+    <div class="grid gap-2">
+      <a
+        href="mailto:fernandez-gonza@hotmail.com?subject=Consulta%20desde%20el%20sitio"
+        class="rounded-md px-3 py-2 bg-white/10 hover:bg-white/15 text-sm"
+        >✉️ Email</a
+      >
+      <a
+        href="https://wa.me/5492983451439?text=Hola%20Gonzalo%2C%20vi%20tu%20portfolio%20y%20quiero%20charlar"
+        class="rounded-md px-3 py-2 bg-white/10 hover:bg-white/15 text-sm"
+        >💬 WhatsApp</a
+      >
+      <a
+        href="/Gonzalo_Fernandez_CV.pdf"
+        download
+        class="rounded-md px-3 py-2 ring-1 ring-white/15 hover:bg-white/5 text-sm"
+        >⬇️ Descargar CV</a
+      >
+      <a
+        href="#contact"
+        class="rounded-md px-3 py-2 ring-1 ring-white/15 hover:bg-white/5 text-sm"
+        >🗓️ Dejar mensaje</a
+      >
+    </div>
+  </div>
+</dialog>
+
+<!-- MODAL 2: Easter egg -->
+<dialog
+  id="modal-ufo2"
+  class="backdrop:bg-black/60 rounded-xl p-0 border border-white/10"
+>
+  <div class="p-5 bg-neutral-900 text-neutral-200 max-w-md">
+    <header class="flex items-center justify-between gap-4 mb-3">
+      <h3 class="text-lg font-semibold">👽 Easter egg desbloqueado</h3>
+      <form method="dialog">
+        <button
+          class="px-3 py-1 rounded-md ring-1 ring-white/15 hover:bg-white/10"
+          >Cerrar</button
+        >
+      </form>
+    </header>
+
+    <p class="text-sm opacity-90 mb-3">
+      Gracias por encontrarme 😄. Usá este código en tu mensaje:
+    </p>
+
+    <div class="flex items-center gap-2 mb-4">
+      <code
+        id="egg-code"
+        class="px-2 py-1 bg-black/40 rounded border border-white/10 select-all"
+        >UFO-DEV10</code
+      >
+      <button
+        class="px-2 py-1 text-xs rounded ring-1 ring-white/15 hover:bg-white/10"
+        onclick="navigator.clipboard.writeText(document.getElementById('egg-code').textContent)"
+        >Copiar</button
+      >
+    </div>
+
+    <p class="text-xs opacity-80 mb-4">
+      Tip: activá el <strong>Modo Retro</strong> para ver el sitio “noventoso”. 🤘
+    </p>
+
+    <div class="flex gap-2">
+      <button
+        id="btn-retro-on"
+        class="rounded-md px-3 py-2 bg-white/10 hover:bg-white/15 text-sm"
+        >🎛️ Modo Retro ON</button
+      >
+      <button
+        id="btn-retro-off"
+        class="rounded-md px-3 py-2 ring-1 ring-white/15 hover:bg-white/5 text-sm"
+        >Modo Retro OFF</button
+      >
+    </div>
+  </div>
+</dialog>
