@@ -160,30 +160,37 @@ import Docker from "../icons/Docker.astro";
 <script type="module" src="/scripts/copy-confetti.js"></script>
 
 <script is:inline>
-    const el = document.getElementById("visit-count");
-    const setCount = (n) =>
-        el && (el.textContent = String(n || 0).padStart(5, "0"));
+  const el = document.getElementById("visit-count");
+  const setCount = (n) => el && (el.textContent = String(n || 0).padStart(5, "0"));
 
-    (async () => {
-        const bust = Date.now();
-        try {
-            const r = await fetch(`/api/visits?up=1&_=${bust}`, {
-                headers: { "Cache-Control": "no-store" },
-            });
-            if (!r.ok) throw new Error("up failed");
-            const d = await r.json();
-            setCount(d.count);
-        } catch {
-            try {
-                const r2 = await fetch(`/api/visits?_=${bust}`, {
-                    headers: { "Cache-Control": "no-store" },
-                });
-                const d2 = await r2.json();
-                setCount(d2.count);
-                console.warn("up failed, got count only");
-            } catch {
-                setCount(1);
-            }
-        }
-    })();
+  const WORKSPACE = "website-visits";
+  const COUNTER   = "website-visits-gonzalo";
+
+  const parseCount = (j) => {
+    const up   = j?.data?.up_count ?? j?.up_count ?? 0;
+    const down = j?.data?.down_count ?? j?.down_count ?? 0;
+    const val  = j?.data?.value ?? j?.value ?? j?.count;
+    return typeof val === "number" ? val : Math.max(0, up - down);
+  };
+
+  (async () => {
+    const bust = Date.now(); // evita caché por query param
+    try {
+      // SUMA siempre al cargar
+      const r = await fetch(`https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER}/up?b=${bust}`);
+      if (!r.ok) throw new Error("up failed");
+      const j = await r.json();
+      setCount(parseCount(j));
+    } catch {
+      // fallback: al menos leer el valor actual
+      try {
+        const r2 = await fetch(`https://api.counterapi.dev/v2/${WORKSPACE}/${COUNTER}?b=${bust}`);
+        const j2 = await r2.json();
+        setCount(parseCount(j2));
+      } catch {
+        setCount(1);
+      }
+    }
+  })();
 </script>
+
