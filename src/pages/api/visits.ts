@@ -11,21 +11,24 @@ const toCount = (j: any) => {
   return typeof val === 'number' ? val : Math.max(0, up - down);
 };
 
-export const GET: APIRoute = async ({ url }) => {
-  const doUp = url.searchParams.has('up');      // si viene ?up=1 incrementamos
-  const r = await fetch(`${V2}/${WORKSPACE}/${COUNTER}${doUp ? '/up' : ''}`);
-  const j = await r.json();
-  return new Response(JSON.stringify({ count: toCount(j) }), {
-    headers: { 'Content-Type': 'application/json' },
-  });
+const noCache = {
+  'Content-Type': 'application/json',
+  'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+  'CDN-Cache-Control': 'no-store',
+  'Netlify-CDN-Cache-Control': 'no-store',
 };
 
-
-// POST: incrementar y devolver total
-export const POST: APIRoute = async () => {
-  const r = await fetch(`${V2}/${WORKSPACE}/${COUNTER}/up`);
-  const j = await r.json();
-  return new Response(JSON.stringify({ count: toCount(j) }), {
-    headers: { 'Content-Type': 'application/json' },
-  });
+export const GET: APIRoute = async ({ url }) => {
+  try {
+    const doUp = url.searchParams.has('up');           // ?up=1 → suma
+    const res = await fetch(`${V2}/${WORKSPACE}/${COUNTER}${doUp ? '/up' : ''}`);
+    if (!res.ok) throw new Error(`counterapi ${res.status}`);
+    const json = await res.json();
+    return new Response(JSON.stringify({ count: toCount(json) }), { headers: noCache });
+  } catch (e: any) {
+    return new Response(JSON.stringify({ count: 0, error: e?.message || 'error' }), {
+      headers: noCache,
+      status: 200,
+    });
+  }
 };

@@ -165,16 +165,22 @@ import Docker from "../icons/Docker.astro";
         el && (el.textContent = String(n || 0).padStart(5, "0"));
 
     (async () => {
+        const bust = Date.now();
         try {
-            const r = await fetch("/api/visits?up=1");
+            const r = await fetch(`/api/visits?up=1&_=${bust}`, {
+                headers: { "Cache-Control": "no-store" },
+            });
             if (!r.ok) throw new Error("up failed");
             const d = await r.json();
             setCount(d.count);
         } catch {
             try {
-                const r2 = await fetch("/api/visits");
+                const r2 = await fetch(`/api/visits?_=${bust}`, {
+                    headers: { "Cache-Control": "no-store" },
+                });
                 const d2 = await r2.json();
                 setCount(d2.count);
+                console.warn("up failed, got count only");
             } catch {
                 setCount(1);
             }
