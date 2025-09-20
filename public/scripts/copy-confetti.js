@@ -1,4 +1,3 @@
-// public/scripts/copy-confetti.js
 (function () {
   function ensureLive() {
     let el = document.getElementById("copy-live");
@@ -167,15 +166,17 @@
   }
 
   function initCopyConfetti(selector = "[data-copy],[data-confetti-copy],#emailLink") {
-    document.querySelectorAll(selector).forEach((el) => bindCopyConfetti(el));
+    const mount = () => document.querySelectorAll(selector).forEach((el) => bindCopyConfetti(el));
+    if (document.readyState !== "loading") mount();
+    else document.addEventListener("DOMContentLoaded", mount);
+    document.addEventListener("astro:page-load", () => mount());
   }
 
-  if (!window.__confetti_inited__) {
+  if (typeof window !== 'undefined' && !window.__confetti_inited__) {
     window.__confetti_inited__ = true;
-    if (document.readyState !== "loading") initCopyConfetti();
-    else document.addEventListener("DOMContentLoaded", initCopyConfetti);
-    document.addEventListener("astro:page-load", initCopyConfetti);
-    // opcional: expone por si querés re-montar manualmente
-    window.initCopyConfetti = initCopyConfetti;
+    if (document.readyState !== 'loading') initCopyConfetti();
+    else document.addEventListener('DOMContentLoaded', () => initCopyConfetti());
+    document.addEventListener('astro:page-load', () => initCopyConfetti());
   }
+
 })();
