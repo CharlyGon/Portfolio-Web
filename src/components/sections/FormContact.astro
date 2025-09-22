@@ -75,8 +75,11 @@
                 name="message"
                 rows="6"
                 required
-                class="w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2"
-                placeholder="Contame brevemente qué necesitás"></textarea>
+                minlength="10"
+                maxlength="500"
+                class="w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2 resize-y"
+                placeholder="Contame brevemente qué necesitás"
+                style="min-height: 150px; max-height: 300px;"></textarea>
         </div>
 
         <div class="flex items-center gap-3">
