@@ -83,10 +83,11 @@
             <button
                 id="submitBtn"
                 type="submit"
-                class="bg-white/10 hover:bg-white/15 rounded-full inline-flex items-center gap-2 px-5 py-2 transition"
+                class="bg-white/10 hover:bg-white/15 disabled:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed rounded-full inline-flex items-center gap-2 px-5 py-2 transition"
             >
                 Enviar mensaje
             </button>
+
             <span id="formStatus" class="text-sm opacity-80" aria-live="polite"
             ></span>
         </div>
@@ -97,10 +98,24 @@
     const EMAIL = "fernandez-gonza@hotmail.com";
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnqejnlz";
 
-    // Envío AJAX a Formspree
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
+
+    const emailInput = document.getElementById("email");
+    const messageInput = document.getElementById("message");
+
+    submitBtn.disabled = true;
+
+    function validateForm() {
+        const emailValid =
+            emailInput.value.trim() !== "" && emailInput.checkValidity();
+        const messageValid = messageInput.value.trim() !== "";
+        submitBtn.disabled = !(emailValid && messageValid);
+    }
+
+    emailInput.addEventListener("input", validateForm);
+    messageInput.addEventListener("input", validateForm);
 
     form?.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -122,6 +137,15 @@
             if (res.ok) {
                 form.reset();
                 statusEl.textContent = "¡Gracias! Te respondo pronto.";
+
+                setTimeout(() => {
+                    statusEl.classList.add("fade-out");
+                }, 4000);
+
+                setTimeout(() => {
+                    statusEl.textContent = "";
+                    statusEl.classList.remove("fade-out");
+                }, 5000);
             } else {
                 statusEl.textContent =
                     "Hubo un problema al enviar. Probá más tarde o escribime por LinkedIn.";
@@ -131,10 +155,17 @@
             statusEl.textContent =
                 "No se pudo enviar. Revisá tu conexión o usá LinkedIn/Email.";
         } finally {
-            submitBtn.disabled = false;
+            validateForm();
             submitBtn.textContent = "Enviar mensaje";
         }
     });
 </script>
+
+<style>
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.8s ease-out;
+    }
+</style>
 
 <script type="module" src="/scripts/copy-confetti.js"></script>
